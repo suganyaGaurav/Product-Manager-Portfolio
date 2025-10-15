@@ -123,6 +123,17 @@ def submit_feedback():
 def thank_you():
     """Renders a Thank You page after feedback submission."""
     return render_template('thankyou.html')
+# ==========================================================
+# 📄 RESUME DOWNLOAD ROUTE
+# ==========================================================
+@app.route('/download_resume')
+def download_resume():
+    """
+    Allows visitors to download your resume file stored in assets/pdfs/.
+    """
+    pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs')
+    return send_from_directory(pdf_dir, 'resume.pdf', as_attachment=True)
+
 
 # ==========================================================
 # 🚀 RUN FLASK SERVER
