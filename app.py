@@ -5,7 +5,7 @@
 # ==========================================================
 
 from flask import Flask, render_template, send_from_directory, request, redirect, url_for
-import os, json
+import os, json, requests  # Added 'requests' for Google Sheets API call
 
 # ==========================================================
 # ⚙️ APP INITIALIZATION
@@ -85,37 +85,51 @@ def serve_governance_pdf(filename):
 # 💬 FEEDBACK SUBMISSION (Floating Widget)
 # ==========================================================
 FEEDBACK_FILE = os.path.join(app.root_path, 'assets', 'data', 'feedback.json')
+GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzC0N9tH--UiUPiIN7aeDdMisOB3JCCpsvV4LKQyTvSdyGsQ8IMYQ_MCLfGCRbCAHWn/exec"
 
 @app.route('/submit_feedback', methods=['POST'])
 def submit_feedback():
-    """Handles feedback submission from floating widget and saves to JSON."""
+    """Handles feedback submission from the floating widget,
+    saves locally, and also sends data to Google Sheets via Apps Script."""
+    
     os.makedirs(os.path.dirname(FEEDBACK_FILE), exist_ok=True)
 
-    # Load existing feedback
+    # Load existing feedback from JSON
+    feedback_data = []
     if os.path.exists(FEEDBACK_FILE):
         with open(FEEDBACK_FILE, 'r') as f:
             feedback_data = json.load(f)
-    else:
-        feedback_data = []
 
-    # Extract fields from form (correct names from HTML)
+    # Extract form fields
     name = request.form.get('name', 'Anonymous')
     email = request.form.get('email', '')
     feedback_message = request.form.get('feedback', '')
 
+    # Create feedback entry
     new_entry = {
         "name": name,
         "email": email,
         "feedback": feedback_message
     }
 
+    # Save locally (backup)
     feedback_data.append(new_entry)
-
     with open(FEEDBACK_FILE, 'w') as f:
         json.dump(feedback_data, f, indent=2)
 
-    # Redirect to thank you page
+    # Send data to Google Sheet via Apps Script Web App
+    try:
+        response = requests.post(GOOGLE_SHEET_WEBAPP_URL, data=new_entry, timeout=5)
+        if response.status_code == 200:
+            print("✅ Feedback successfully sent to Google Sheets.")
+        else:
+            print(f"⚠️ Google Sheet logging failed. Status: {response.status_code}")
+    except Exception as e:
+        print(f"⚠️ Error sending feedback to Google Sheets: {e}")
+
+    # Redirect to thank-you page
     return redirect(url_for('thank_you'))
+
 # ==========================================================
 # 🙏 THANK YOU PAGE
 # ==========================================================
@@ -123,18 +137,15 @@ def submit_feedback():
 def thank_you():
     """Renders a Thank You page after feedback submission."""
     return render_template('thankyou.html')
+
 # ==========================================================
 # 📄 RESUME VIEW ROUTE (Opens in Browser)
 # ==========================================================
 @app.route('/view_resume')
 def view_resume():
-    """
-    Opens the resume PDF directly in a new browser tab instead of downloading.
-    """
+    """Opens the resume PDF directly in a new browser tab instead of downloading."""
     pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs')
     return send_from_directory(pdf_dir, 'resume.pdf')
-
-
 
 # ==========================================================
 # 🚀 RUN FLASK SERVER
