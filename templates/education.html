@@ -1,0 +1,139 @@
+<!-- ==========================================================
+🌸 Suganya P | Education & Growth Journey
+Purpose: Showcase education, certifications, transition, and professional experience
+========================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education & Growth Journey | Suganya P</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/education.css') }}">
+</head>
+
+<body>
+
+  <!-- ==========================================================
+       🔹 HEADER / NAVIGATION BAR
+  =========================================================== -->
+  <header class="top-bar">
+    <div class="welcome-text"><b>Education & Growth Journey</b></div>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}" class="link"><i>Home</i></a>
+      <a href="{{ url_for('governance') }}" class="link"><i>Governance</i></a>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       🌸 PAGE TITLE
+  <!-- ==========================================================
+       🎓 TOP GRID – Education, Certifications, Career Transition
+  =========================================================== -->
+  <section class="edu-top-grid">
+
+    <!-- 🎓 Degree Card -->
+    <div class="edu-card">
+      <img src="{{ url_for('static', filename='images/degrees.jpg') }}" alt="Degree">
+      <h2>🎓 Education</h2>
+      <ul>
+        <li><strong>* PG Diploma in Artificial Intelligence & Machine Learning</strong><br>NIT Warangal, 2023</li>
+        <li><strong>* Executive MBA in IT Management</strong><br>Indian School of Management & Studies, Mumbai, 2018</li>
+        <li><strong>* Bachelor of Engineering in Computer Science</strong><br>Periyar Maniammai University, Thanjavur, 2013</li>
+      </ul>
+    </div>
+
+    <!-- 📜 Certifications Card -->
+    <div class="edu-card">
+      <img src="{{ url_for('static', filename='images/certifications.jpg') }}" alt="Certifications">
+      <h2>📜 Certifications</h2>
+      <ul>
+        <li><strong>* Product Management</strong> – Simplilearn, 2025</li>
+        <li><strong>* AI Security & Governance</strong> – Securiti, 2025</li>
+        <li><strong>* Stakeholder Management</strong> – LinkedIn Learning, 2025</li>
+        <li><strong>* Agile Product Management</strong> – In Progress</li>
+      </ul>
+    </div>
+
+    <!-- 🌸 Career Transition Card -->
+    <div class="edu-card highlight-card">
+      <img src="{{ url_for('static', filename='images/achievements.jpg') }}" alt="Career Transition">
+      <h2>🌸 Career Transition</h2>
+      <ul>
+        <li><strong>* 2019 – 2021:</strong> Took a purposeful pause for motherhood, building resilience, empathy, and leadership through life experience.</li>
+        <li><strong>* 2021 – 2023:</strong> Reinvested in professional growth with a PG Diploma in AI/ML at NIT Warangal, specializing in NLP and Generative AI.</li>
+        <li><strong>* 2023 – Present:</strong> Working as an AI/ML Consultant, evolving into a Responsible AI Product Manager focused on governance and ethical design.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- ==========================================================
+       💼 PROFESSIONAL EXPERIENCE SECTION (4 Equal Cards)
+  =========================================================== -->
+  <section class="experience-section">
+    <h2 class="section-title">Professional Experience</h2>
+    <p class="section-subtitle">
+      A progression from Quality Engineering to Responsible AI — guided by purpose, governance, and innovation.
+    </p>
+
+    <div class="experience-container">
+
+      <!-- 🔹 Freelance AI/ML -->
+      <div class="exp-card">
+        <h3>AI/ML Engineer (Freelance & Project-Based)</h3>
+        <p class="exp-location">Remote | May 2023 – Present</p>
+        <ul>
+          <li>1. Developed <strong>Multilingual dubbing system </strong> using ASR, MT, and TTS to automate voice localization workflows.</li>
+          <li>2. Built <strong>Book recommendation system </strong> leveraging Agentic AI + RAG for personalized and cost-efficient suggestions.</li>
+          <li>3. Created <strong>Context-aware chatbots </strong> with retrieval-augmented memory to reduce hallucinations.</li>
+          <li>4. Fine-tuned <strong>LLMs with LoRA/Q-LoRA</strong> to enhance domain relevance while optimizing GPU efficiency.</li>
+          <li>5. Deployed modular AI systems using <strong>Docker + FastAPI</strong> and integrated <strong>AI governance protocols</strong>.</li>
+        </ul>
+      </div>
+
+      <!-- 🔹 GE Healthcare -->
+      <div class="exp-card">
+        <h3>UFT Automation Test Lead – GE Healthcare</h3>
+        <p class="exp-location">Bengaluru | Aug 2018 – Oct 2019</p>
+        <ul>
+          <li>1. Led automation testing for <strong>biomedical imaging platforms</strong>, improving release reliability and test coverage.</li>
+          <li>2. Developed a <strong>Hybrid UFT Framework</strong> reducing cycle time and improving CI/CD integration.</li>
+          <li>3. Optimized <strong>regression testing pipelines</strong> with 30% faster execution.</li>
+          <li>4. Mentored QA teams and drove cross-functional delivery excellence.</li>
+        </ul>
+      </div>
+
+      <!-- 🔹 Infosys -->
+      <div class="exp-card">
+        <h3>Automation Testing Systems Engineer – Infosys Technologies Ltd.</h3>
+        <p class="exp-location">Bengaluru | Jan 2017 – Mar 2018</p>
+        <ul>
+          <li>1. Executed <strong>Regression and Performance Testing</strong> for Oracle EBS and Capital Stream applications.</li>
+          <li>2. Developed <strong>VBScript automation suites</strong> using UFT and ALM.</li>
+          <li>3. Produced <strong>Run-books and Test Reports</strong> supporting monthly release quality assurance.</li>
+        </ul>
+      </div>
+
+      <!-- 🔹 Caterpillar -->
+      <div class="exp-card">
+        <h3>Automation Test Engineer – Caterpillar India Pvt. Ltd.</h3>
+        <p class="exp-location">Bengaluru | Aug 2013 – Dec 2016</p>
+        <ul>
+          <li>1. Performed <strong>Functional and Integration Testing</strong> for Sales & Service web applications integrated with Oracle EBS.</li>
+          <li>2. Developed <strong>country-specific regression scripts</strong> for France, SEA, and Australia.</li>
+          <li>3. Utilized <strong>Bugzilla and Quality Center</strong> for issue tracking and test management.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       🌿 FOOTER
+  =========================================================== -->
+  <footer class="edu-footer">
+    <p>Dedicated to lifelong learning 🌱 Built with heart and humility — <b>Suganya P 🌸</b></p>
+  </footer>
+
+</body>
+</html>

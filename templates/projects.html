@@ -1,0 +1,125 @@
+<!-- ==========================================================
+🌸 Suganya P | Projects Page
+Unified 3-Card Layout | Opens PDFs in New Tab | Blue Audit Theme
+========================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Projects | Suganya P</title>
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ==========================================================
+       🔹 HEADER / NAVIGATION BAR
+  =========================================================== -->
+  <header class="top-bar">
+    <div class="welcome-text"><b>AI Portfolio Projects</b></div>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}" class="link"><i>Home</i></a>
+      <a href="{{ url_for('governance') }}" class="link"><i>Governance</i></a>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       💼 PROJECTS SECTION (3 Cards in One Glance)
+  =========================================================== -->
+  <section class="projects-section">
+
+    <!-- 🐾 KITTYLIT -->
+    <div class="project-card">
+      <h2>KittyLit</h2>
+      <p class="tagline">Responsible AI platform for parents</p>
+      <p class="desc">
+        Helps parents find meaningful, age-appropriate books using fine-tuned LLMs and RAG pipelines.
+      </p>
+
+      <div class="btn-group">
+        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit-PRD.pdf') }}" target="_blank">View PRD</a>
+        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit-MRD.pdf') }}" target="_blank">View MRD</a>
+        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit_2025_Gantt_Roadmap.pdf') }}" target="_blank">View Roadmap</a>
+        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit Case Study.pdf') }}" target="_blank">View Case Study</a>
+      </div>
+
+      <div class="visual">
+        <img src="{{ url_for('static', filename='images/kittyLit_Architecture.png') }}" alt="KittyLit Architecture">
+      </div>
+
+      <p class="governance-note">
+        Governance, compliance, and Responsible AI measures for this project are detailed in the Governance section.
+      </p>
+    </div>
+
+    <!-- 🤝 BROBUDDY -->
+    <div class="project-card">
+      <h2>BroBuddy</h2>
+      <p class="tagline">AI mentorship chatbot for youth (In Progress)</p>
+      <p class="desc">
+        A supportive platform encouraging men to express themselves openly, promoting empathy and respect.
+      </p>
+
+      <div class="btn-group">
+        <a href="{{ url_for('serve_pdf', filename='brobuddy/PRD.pdf') }}" target="_blank">View PRD</a>
+        <a href="{{ url_for('serve_pdf', filename='brobuddy/MRD.pdf') }}" target="_blank">View MRD</a>
+        <a href="{{ url_for('serve_pdf', filename='brobuddy/Roadmap.pdf') }}" target="_blank">View Roadmap</a>
+        <a href="{{ url_for('serve_pdf', filename='brobuddy/CaseStudy.pdf') }}" target="_blank">View Case Study</a>
+      </div>
+
+      <div class="visual">
+        <img src="{{ url_for('static', filename='images/BroBuddy_Placeholder.jpeg') }}" alt="BroBuddy Interface">
+      </div>
+
+      <p class="governance-note">
+        Governance, compliance, and Responsible AI measures for this project are detailed in the Governance section.
+      </p>
+    </div>
+
+    <!-- 🎙️ KUTTYDUB -->
+    <div class="project-card">
+      <h2>KuttyDub</h2>
+      <p class="tagline">AI dubbing system for children’s content (In Progress)</p>
+      <p class="desc">
+        Uses Whisper ASR, Coqui TTS, and FFmpeg to generate expressive Tamil voiceovers for kids’ educational videos.
+      </p>
+
+      <div class="btn-group">
+        <a href="{{ url_for('serve_pdf', filename='kuttydub/PRD.pdf') }}" target="_blank">View PRD</a>
+        <a href="{{ url_for('serve_pdf', filename='kuttydub/MRD.pdf') }}" target="_blank">View MRD</a>
+        <a href="{{ url_for('serve_pdf', filename='kuttydub/Roadmap.pdf') }}" target="_blank">View Roadmap</a>
+        <a href="{{ url_for('serve_pdf', filename='kuttydub/CaseStudy.pdf') }}" target="_blank">View Case Study</a>
+      </div>
+
+      <div class="visual">
+        <img src="{{ url_for('static', filename='images/KuttyDub_Placeholder.jpeg') }}" alt="KuttyDub Interface">
+      </div>
+
+      <p class="governance-note">
+        Governance, compliance, and Responsible AI measures for this project are detailed in the Governance section.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ==========================================================
+       🌿 FOOTER SECTION
+  =========================================================== -->
+  <footer>
+    <div class="footer-container">
+      <p>
+        Dedicated to all mothers 🌸 Built with responsibility, creativity, and heart by
+        <strong>Suganya P</strong> 🌼
+      </p>
+      <p class="visitors">👁️ Visitors: <strong>{{ visits }}</strong></p>
+      <p class="note">No personal data collected — visitor count only.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

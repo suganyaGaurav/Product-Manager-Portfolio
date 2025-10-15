@@ -1,0 +1,92 @@
+<!-- ==========================================================
+🌸 PM Website | index.html
+Author: Suganya P
+Purpose: AI Product Manager Portfolio Homepage
+========================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suganya P | AI Product Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icons/projects.png') }}">
+</head>
+
+<body>
+    <!-- ================= HEADER SECTION ================= -->
+    <header>
+        <h2>AI Governance & Ethics</h2>
+        <p>My Product Manager Portfolio | Governance, Security & Responsible AI</p>
+    </header>
+
+    <!-- ================= MAIN CARD SECTION ================= -->
+    <section class="main-card">
+        <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Suganya Profile" class="profile-img">
+
+        <div class="text-block">
+            <h3>I build responsible, ethical AI products with care.</h3>
+            <p>Driven by governance and compassion, I integrate AI security into every stage of product management.</p>
+
+            <div class="btn-group">
+                <a href="/governance" class="btn">
+                    <img src="{{ url_for('static', filename='icons/governance.png') }}" class="icon">
+                    Explore Governance
+                </a>
+                <a href="{{ url_for('serve_pdfs', filename='resume.pdf') }}" class="btn" download>
+                    <img src="{{ url_for('static', filename='icons/resume.png') }}" class="icon">
+                    Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROJECT SECTION ================= -->
+    <section class="projects">
+        <h3>
+            <img src="{{ url_for('static', filename='icons/projects.png') }}" class="icon">
+            My Responsible AI Projects
+        </h3>
+
+        <div class="project-grid">
+            <a href="/projects/kittylit" class="project-card">
+                <img src="{{ url_for('static', filename='images/kittyLit_Wireframe.png') }}" alt="KittyLit">
+                <p>KittyLit</p>
+            </a>
+            <a href="/projects/kuttydub" class="project-card">
+                <img src="{{ url_for('static', filename='images/KuttyDub_Placeholder.jpg') }}" alt="KuttyDub">
+                <p>KuttyDub</p>
+            </a>
+            <a href="/projects/brobuddy" class="project-card">
+                <img src="{{ url_for('static', filename='images/BroBuddy_Placeholder.jpg') }}" alt="BroBuddy">
+                <p>BroBuddy</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER SECTION ================= -->
+    <footer>
+    <div class="social">
+        <a href="https://linkedin.com/in/suganyap" target="_blank">
+            <img src="{{ url_for('static', filename='icons/linkedin.png') }}" class="icon">
+        </a>
+        <a href="mailto:suganyap@example.com">
+            <img src="{{ url_for('static', filename='icons/mail.png') }}" class="icon">
+        </a>
+    </div>
+    <p>Dedicated to all mothers 🌸</p>
+    <p class="visits">👁️ Visitors: {{ visits }}</p>
+    <p class="privacy-note">🔒 No personal data collected — visitor count only.</p>
+    </footer>
+
+
+    <!-- ================= FLOATING SHAPES ================= -->
+    <img src="{{ url_for('static', filename='icons/shape1.png') }}" class="shape" style="top: 10%; left: 5%;">
+    <img src="{{ url_for('static', filename='icons/shape2.png') }}" class="shape" style="top: 20%; right: 10%;">
+    <img src="{{ url_for('static', filename='icons/shape3.png') }}" class="shape" style="bottom: 10%; left: 10%;">
+    <img src="{{ url_for('static', filename='icons/shape4.png') }}" class="shape" style="bottom: 5%; right: 5%;">
+    <img src="{{ url_for('static', filename='icons/shape5.png') }}" class="shape" style="top: 50%; left: 45%;">
+    <img src="{{ url_for('static', filename='icons/shape6.png') }}" class="shape" style="bottom: 25%; right: 40%;">
+</body>
+</html>

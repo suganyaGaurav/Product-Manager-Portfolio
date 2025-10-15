@@ -1,0 +1,189 @@
+/* ==========================================================
+🌸 Suganya P | Governance Page CSS
+Two-Row Layout | Balanced Audit Blue Tone | Responsive
+========================================================== */
+
+/* ===== Base Styles ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(160deg, #0A1930 0%, #1E3A8A 100%);
+  color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+.top-bar {
+  background-color: black;
+  color: white;
+  padding: 10px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.top-bar nav a:hover {
+  color: #60A5FA;
+}
+
+/* ===== Page Header ===== */
+.gov-header {
+  text-align: center;
+  padding: 15px 0 5px 0;
+}
+
+.gov-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.gov-header p {
+  font-size: 0.9rem;
+  color: #c5d3ff;
+}
+
+/* ==========================================================
+🔖 HEADER TAG STYLING (Audit Notice)
+========================================================== */
+.header-title-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.audit-tag {
+  background: linear-gradient(90deg, #4f8cff, #6ba8ff);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  box-shadow: 0 3px 8px rgba(79, 140, 255, 0.4);
+  animation: pulseTag 3s infinite ease-in-out;
+}
+
+/* 🔄 Gentle pulse effect for attention */
+@keyframes pulseTag {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* ===== Card Base Style ===== */
+.gov-card {
+  background-color: #1E3A8A;
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gov-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(96, 165, 250, 0.4);
+}
+
+.gov-card h2 {
+  color: #BFDBFE;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.gov-card p {
+  font-size: 0.8rem;
+  color: #e0eaff;
+  line-height: 1.3;
+}
+
+.gov-card img {
+  width: 75%;
+  border-radius: 12px;
+  margin: 8px 0;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-block;
+  margin: 4px 4px;
+  background-color: #60A5FA;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: 0.3s ease;
+}
+
+.btn.secondary {
+  background-color: #3B82F6;
+}
+
+.btn:hover {
+  background-color: #2563EB;
+}
+
+/* ===== Top Grid (2 Cards) ===== */
+.gov-top-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+/* ===== Bottom Grid (3 Cards) ===== */
+.gov-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 18px;
+  width: 90%;
+  margin: 10px auto 25px auto;
+}
+
+/* ===== Steps inside cards ===== */
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.steps span {
+  background: #3B82F6;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Responsive (Laptop/Tablet) ===== */
+@media (max-width: 1366px) {
+  .gov-top-grid, .gov-bottom-grid {
+    grid-gap: 12px;
+  }
+  .gov-card h2 { font-size: 0.95rem; }
+  .gov-card p { font-size: 0.78rem; }
+  .gov-card img { width: 70%; }
+}

@@ -1,0 +1,118 @@
+<!-- ==========================================================
+🌸 Suganya P | AI Governance Page (2-Row Layout)
+Top: S-RAIEF + Transparency Audit | Bottom: 3 Compact Cards
+========================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Governance | Suganya P</title>
+
+  <!-- 🌸 Styles & Fonts -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/governance.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ==========================================================
+       🌸 NAVIGATION BAR
+  =========================================================== -->
+  <header class="top-bar">
+    <span class="header-title">Responsible AI</span>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('projects') }}">Projects</a>
+    </nav>
+  </header>
+
+  <!-- ==========================================================
+       🌸 PAGE HEADER
+  =========================================================== -->
+<!-- ==========================================================
+     🌸 PAGE HEADER (With Audit Tag)
+========================================================== -->
+    <div class="gov-header">
+      <div class="header-title-wrap">
+        <h1>AI Governance Framework</h1>
+        <span class="audit-tag">🔎 Explore full page for more audits & governance reports</span>
+      </div>
+      <p>Ensuring innovation with integrity — through transparency, security, and accountability.</p>
+    </div>
+
+
+  <!-- ==========================================================
+       🌸 TOP GRID: S-RAIEF + AUDIT
+  =========================================================== -->
+  <div class="gov-top-grid">
+    
+    <!-- 🧩 S-RAIEF -->
+    <div class="gov-card">
+      <h2>S-RAIEF Framework</h2>
+      <img src="{{ url_for('static', filename='images/SRAIEF_Framework.png') }}" alt="S-RAIEF Framework" />
+      <div class="sraief-points">
+        <p><b>Security:</b> Protecting AI systems from misuse and data leaks.</p>
+        <p><b>Accountability:</b> Ensuring decisions are traceable and owned.</p>
+        <p><b>Trust:</b> Building confidence through transparent design.</p>
+        <p><b>Explainability:</b> Making model reasoning visible and clear.</p>
+        <p><b>Fairness:</b> Guarding against bias and ensuring equity.</p>
+      </div>
+      <p class="note">S-RAIEF forms the foundation of my AI Governance approach — balancing innovation with integrity.</p>
+      <a href="{{ url_for('serve_governance_pdf', filename='AI_Governance_security_Projects.pdf') }}" target="_blank" class="btn">🔍 View Governance Overview</a>
+    </div>
+
+    <!-- 📊 Transparency Audit -->
+    <div class="gov-card">
+      <h2>Transparency Audit Report (2025)</h2>
+      <img src="{{ url_for('static', filename='images/Governance_Audit_Summary.jpeg') }}" alt="Audit Summary" />
+      <p>This audit evaluates AI systems for transparency, privacy, and compliance under frameworks such as EU AI Act, NIST RMF, and ISO 42001.</p>
+      <a href="{{ url_for('serve_governance_pdf', filename='Ai Transparency Audit Report Published.pdf') }}" target="_blank" class="btn">📘 View Full Report</a>
+      <a href="#" class="btn secondary">📊 Key Findings</a>
+    </div>
+
+  </div>
+
+  <!-- ==========================================================
+       🌸 BOTTOM GRID: 3 CARDS
+  =========================================================== -->
+  <div class="gov-bottom-grid">
+
+    <!-- 🔎 NSDC Verification -->
+    <div class="gov-card">
+      <h2>Governance in Action (NSDC Verification)</h2>
+      <p>Ethical AI audit verifying NSDC internship platforms using S-RAIEF principles.</p>
+      <div class="steps">
+        <span>✅ Verification</span>
+        <span>🔍 Validation</span>
+        <span>⚠️ Risk Scan</span>
+        <span>📢 Awareness Report</span>
+      </div>
+      <a href="{{ url_for('serve_governance_pdf', filename='Responsible_Fake_Inernship_Audit_Report_.pdf') }}" target="_blank" class="btn">📑 Read Report</a>
+    </div>
+
+    <!-- 🔐 Governance Security -->
+    <div class="gov-card">
+      <h2>AI Governance Security in Projects</h2>
+      <p>Showcases how AI governance and security principles were embedded across projects — ensuring compliance, data protection, and responsible pipelines.</p>
+      <a href="{{ url_for('serve_governance_pdf', filename='AI_Governance_security_Projects.pdf') }}" target="_blank" class="btn">🔐 Download Report</a>
+    </div>
+
+    <!-- ⚙️ Practical Applications -->
+    <div class="gov-card">
+      <h2>Practical Governance Applications</h2>
+      <p>Includes implementations such as traceability, audit logging, and responsible AI decisions across systems.</p>
+      <a href="{{ url_for('serve_governance_pdf', filename='AI_Governance_Security_practical_steps.pdf') }}" target="_blank" class="btn">⚙️ View Practical Steps</a>
+    </div>
+
+  </div>
+
+  <!-- ==========================================================
+       🌸 FOOTER
+  =========================================================== -->
+  <footer class="footer">
+    <p>© 2025 Suganya P | AI Governance & Security</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+PM_Website/
+│
+├── Templates 
+	-index.html
+	-projects.html
+	-governance.html
+	-education.html
+	thankyou.html
+│
+├── assets/
+	|	
+	|
+|   |----Css
+	  --style.css
+	  --projects.css
+	  --governance.css
+	  --education.css'
+│   ├── images/                    ← Already contains profile, background, etc.
+│   │    ├── profile.jpg
+│   │    ├── background_pattern.jpg
+│   │    ├── KittyLit_Wireframe.png
+│   │    ├── KuttyDub_Placeholder.jpg
+│   │    ├── BroBuddy_Placeholder.jpg
+│   │    ├── SRAIEF_Framework.png
+│   │    └── Governance_Audit.jpg
+│   │
+│   ├── pdfs/                      ← All project documents
+│   │    ├── kittylit/
+│   │    ├── kuttydub/
+│   │    ├── brobuddy/
+│   │    └── resume.pdf            ✅ ← Add your resume here
+│   │
+│   └── icons/                     ← New folder for pastel minimal SVG icons
+│        ├── shape1.svg
+│        ├── shape2.svg
+│        ├── shape3.svg
+│        ├── shape4.svg
+│        ├── shape5.svg
+│        ├── shape6.svg
+│        ├── governance.svg
+│        ├── resume.svg
+│        ├── linkedin.svg
+│        ├── mail.svg
+│        └── projects.svg
+│
+├── 
