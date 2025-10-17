@@ -85,26 +85,18 @@ def submit_feedback():
     """Handles feedback submission and saves locally."""
     os.makedirs(os.path.dirname(FEEDBACK_FILE), exist_ok=True)
 
-    # Load existing feedback data
     feedback_data = []
     if os.path.exists(FEEDBACK_FILE):
         with open(FEEDBACK_FILE, 'r') as f:
             feedback_data = json.load(f)
 
-    # Extract form fields
     name = request.form.get('name', 'Anonymous')
     email = request.form.get('email', '')
     feedback_message = request.form.get('feedback', '')
 
-    # Create feedback entry
-    new_entry = {
-        "name": name,
-        "email": email,
-        "feedback": feedback_message
-    }
-
-    # Save locally
+    new_entry = {"name": name, "email": email, "feedback": feedback_message}
     feedback_data.append(new_entry)
+
     with open(FEEDBACK_FILE, 'w') as f:
         json.dump(feedback_data, f, indent=2)
 
@@ -116,7 +108,6 @@ def submit_feedback():
 # ==========================================================
 @app.route('/thankyou')
 def thank_you():
-    """Renders a Thank You page after feedback submission."""
     return render_template('thankyou.html')
 
 # ==========================================================
@@ -125,16 +116,19 @@ def thank_you():
 @app.route('/admin-login', methods=['GET', 'POST'])
 def admin_login():
     """Secure login for admin to view feedback."""
-    ADMIN_KEY = os.environ.get('ADMIN_KEY', 'MuruganBlessMeAlways')
-    print("🔍 Loaded ADMIN_KEY:", ADMIN_KEY)
+    admin_key_env = os.getenv("ADMIN_KEY", "MuruganBlessMeAlways")
+    ADMIN_KEY = admin_key_env.strip()  # Clean hidden spaces/newlines
+    print("🔍 Loaded ADMIN_KEY from environment:", repr(ADMIN_KEY))
 
     if request.method == 'POST':
-        password = request.form.get('password').strip()
-        print("🧩 Entered Password:", password)  # log what came from form
+        password = request.form.get('password', '').strip()
+        print("🧩 Entered Password:", repr(password))
         if password == ADMIN_KEY:
             session['admin'] = True
+            print("✅ Admin authenticated successfully!")
             return redirect(url_for('view_feedback'))
         else:
+            print("❌ Authentication failed.")
             return "<h3 style='color:red; text-align:center;'>⚠️ Wrong password! Try again.</h3>"
 
     return '''
@@ -154,7 +148,9 @@ def admin_login():
         </div>
     '''
 
-
+# ==========================================================
+# 🌸 VIEW FEEDBACK DASHBOARD
+# ==========================================================
 @app.route('/view_feedback')
 def view_feedback():
     """Displays feedback entries only if admin is logged in."""
@@ -167,7 +163,6 @@ def view_feedback():
     with open(FEEDBACK_FILE, 'r') as f:
         feedback_data = json.load(f)
 
-    # 🌸 Styled feedback dashboard
     feedback_html = """
     <div style="font-family:Poppins; background:linear-gradient(180deg,#061A3A,#0B2B5C);
                 color:#fff; padding:40px; border-radius:12px; width:80%; margin:auto; 
@@ -193,9 +188,11 @@ def view_feedback():
     """
     return feedback_html
 
+# ==========================================================
+# 🚪 LOGOUT ROUTE
+# ==========================================================
 @app.route('/logout')
 def logout():
-    """Clears admin session."""
     session.pop('admin', None)
     return redirect(url_for('home'))
 
