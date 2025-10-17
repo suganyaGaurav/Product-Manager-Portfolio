@@ -1,3 +1,7 @@
+<!-- ==========================================================
+🌸 Thank You Page | Suganya P | Responsible AI Portfolio
+Elegant • Secure • Interactive
+========================================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +9,154 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | Suganya P</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    /* ==========================================================
+    🌸 THANK YOU PAGE – Warm, Elegant & Secure
+    =========================================================== */
+    body {
+      background: linear-gradient(180deg, #061A3A, #0B2B5C);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      animation: fadeInBg 1.2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      color: #ffb6d6;
+      margin-bottom: 0.5rem;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    p {
+      color: #d9e7ff;
+      font-size: 1.1rem;
+      margin: 10px 0;
+      animation: fadeIn 1.6s ease-in-out;
+    }
+
+    .opportunity {
+      margin-top: 10px;
+      color: #9ecbff;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .home-btn {
+      margin-top: 25px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      background: linear-gradient(135deg, #1e4fff, #537cff);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .home-btn:hover {
+      background: linear-gradient(135deg, #537cff, #7ea4ff);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(130, 207, 255, 0.4);
+    }
+
+    /* 🔒 Admin Button */
+    #adminAccessBtn {
+      margin-top: 40px;
+      background: linear-gradient(135deg, #102e74, #244ca8);
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.15);
+      font-size: 0.95rem;
+    }
+
+    #adminAccessBtn:hover {
+      background: linear-gradient(135deg, #2b6cff, #568dff);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(130, 207, 255, 0.3);
+    }
+
+    /* 🌸 Floating Petals Animation */
+    .petal {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle, #ffb6d6 30%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: floatPetal 10s infinite linear;
+    }
+
+    .petal:nth-child(1) { left: 20%; animation-delay: 0s; }
+    .petal:nth-child(2) { left: 50%; animation-delay: 2s; }
+    .petal:nth-child(3) { left: 80%; animation-delay: 4s; }
+    .petal:nth-child(4) { left: 35%; animation-delay: 6s; }
+
+    /* 🌸 Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInBg {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    @keyframes floatPetal {
+      0% { top: -10px; transform: rotate(0deg); opacity: 0.9; }
+      50% { opacity: 0.7; transform: rotate(180deg); }
+      100% { top: 100vh; transform: rotate(360deg); opacity: 0; }
+    }
+  </style>
 </head>
-<body class="thankyou-body">
-  <div class="thankyou-container">
-    <h1>🌸 Thank You!</h1>
-    <p>Your feedback means a lot and helps me improve.</p>
-    <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
-  </div>
+
+<body>
+  <!-- 🌸 Floating Petals -->
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+
+  <!-- 💬 Thank You Message -->
+  <h1>🌸 Thank You!</h1>
+  <p>Your feedback means a lot and helps me grow stronger with every step.</p>
+
+  <p class="opportunity">
+    🌱 I’m currently open to opportunities in <br>
+    <strong>Responsible AI & Product Management.</strong>
+  </p>
+
+  <!-- 🌼 Home Button -->
+  <a href="/" class="home-btn">⬅ Back to Home</a>
+
+  <!-- 🔒 Admin Access -->
+  <button id="adminAccessBtn" onclick="window.location.href='/admin-login'">🔒 Admin Access</button>
+
+  <script>
+    // 👇 Optional: Add a small access hint (only visible in console)
+    console.log("🌸 Hint: Admin panel is protected server-side. Use Render ENV variable ADMIN_KEY to login.");
+  </script>
 </body>
 </html>
