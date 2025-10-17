@@ -122,28 +122,35 @@ def thank_you():
 # ==========================================================
 # 🔒 ADMIN LOGIN & FEEDBACK VIEWER
 # ==========================================================
-ADMIN_KEY = os.getenv("ADMIN_KEY", "MuruganBlessMeAlways")  # secure secret key
-
 @app.route('/admin-login', methods=['GET', 'POST'])
 def admin_login():
     """Secure login for admin to view feedback."""
+    # ✅ Load admin key at runtime from Render environment
+    ADMIN_KEY = os.environ.get('ADMIN_KEY', 'MuruganBlessMeAlways')
+    print("🔍 Loaded ADMIN_KEY:", ADMIN_KEY)  # Check in Render logs
+
     if request.method == 'POST':
         password = request.form.get('password')
         if password == ADMIN_KEY:
             session['admin'] = True
-            print("🔍 Loaded ADMIN_KEY from environment:", ADMIN_KEY)
             return redirect(url_for('view_feedback'))
         else:
             return "<h3 style='color:red; text-align:center;'>⚠️ Wrong password! Try again.</h3>"
+
+    # Login Form (styled for your theme)
     return '''
-        <div style="text-align:center; margin-top:80px; font-family:Poppins; color:#fff; background:#0B2B5C; padding:40px; border-radius:12px;">
+        <div style="text-align:center; margin-top:80px; font-family:Poppins; color:#fff; 
+                    background:linear-gradient(160deg, #0A1930 0%, #1E3A8A 100%);
+                    padding:40px; border-radius:12px; width:60%; margin:auto; box-shadow:0 0 15px rgba(130,207,255,0.3);">
             <h2>🔐 Admin Login</h2>
             <form method="POST">
                 <input type="password" name="password" placeholder="Enter Admin Key"
-                style="padding:8px; border-radius:6px; border:none; margin-top:10px;" required>
+                style="padding:8px; border-radius:6px; border:none; margin-top:10px; width:60%;
+                       background:rgba(255,255,255,0.15); color:#fff; text-align:center;" required>
                 <br><br>
                 <button type="submit"
-                style="padding:8px 16px; border-radius:8px; background:#1e4fff; color:white; border:none;">Login</button>
+                style="padding:8px 16px; border-radius:8px; background:linear-gradient(135deg,#1e4fff,#537cff);
+                       color:white; border:none; cursor:pointer;">Login</button>
             </form>
         </div>
     '''
@@ -160,12 +167,37 @@ def view_feedback():
     with open(FEEDBACK_FILE, 'r') as f:
         feedback_data = json.load(f)
 
-    feedback_html = "<div style='font-family:Poppins; background:#061A3A; color:#fff; padding:40px;'>"
-    feedback_html += "<h2>💬 Collected Feedback</h2><hr>"
+    # 🌸 Styled feedback dashboard
+    feedback_html = """
+    <div style="font-family:Poppins; background:linear-gradient(180deg,#061A3A,#0B2B5C);
+                color:#fff; padding:40px; border-radius:12px; width:80%; margin:auto; 
+                box-shadow:0 0 25px rgba(130,207,255,0.3);">
+        <h2 style='text-align:center; color:#82cfff;'>💬 Collected Feedback</h2>
+        <hr style='border-color:#537cff;'>
+    """
     for entry in feedback_data:
-        feedback_html += f"<p><strong>{entry['name']}</strong> ({entry['email']})<br>🌸 {entry['feedback']}</p><hr>"
-    feedback_html += "</div>"
+        feedback_html += f"""
+        <div style="background:rgba(255,255,255,0.08); margin:15px 0; padding:15px; border-radius:10px;
+                    box-shadow:0 2px 10px rgba(66,133,244,0.2); transition:transform 0.3s;">
+            <p><strong>{entry['name']}</strong> ({entry['email']})</p>
+            <p style='color:#d9e7ff;'>🌸 {entry['feedback']}</p>
+        </div>
+        """
+    feedback_html += """
+        <hr style='border-color:#537cff;'>
+        <div style='text-align:center;'>
+            <a href='/' style='color:#82cfff; text-decoration:none;'>⬅ Back to Home</a> |
+            <a href='/logout' style='color:#ffb6d6; text-decoration:none;'>Logout 🔒</a>
+        </div>
+    </div>
+    """
     return feedback_html
+
+@app.route('/logout')
+def logout():
+    """Clears admin session."""
+    session.pop('admin', None)
+    return redirect(url_for('home'))
 
 # ==========================================================
 # 🚀 RUN FLASK SERVER (LOCAL / RENDER)
