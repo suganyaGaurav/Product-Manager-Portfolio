@@ -21,7 +21,7 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
     <div class="welcome-text"><b>Responsible AI</b></div>
     <div class="nav-links">
       <a href="https://www.linkedin.com" class="link"><i>LinkedIn</i></a>
-      <a href="/view_resume" target="_blank" class="link"><i>Resume</i></a>
+      <a href="{{ url_for('static', filename='resume.pdf') }}" class="link"><i>Resume</i></a>
     </div>
   </header>
 
@@ -31,12 +31,17 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   <section class="hero">
     <div class="hero-container">
       
-      <!-- LEFT SIDE: Responsible PM Image -->
+      <!-- LEFT SIDE: Responsible PM Image with Animated Glow + Orbits -->
       <div class="hero-left">
+        <div class="orbit-container">
+          <div class="orbit orbit1"></div>
+          <div class="orbit orbit2"></div>
+        </div>
+
         <img
           src="{{ url_for('static', filename='images/suganya_Responsible_PM.png') }}"
-          alt="Responsible AI Product Manager Visualization"
-          class="hero-image-left"
+          alt="Responsible AI Product Manager"
+          class="hero-image-left animated-circle"
         />
       </div>
   
@@ -51,6 +56,8 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
               human-centered, and aligned with responsible innovation.
             </p>
           </div>
+
+          <!-- 🌸 Profile Photo + Quote Bubble -->
           <div class="hero-image">
             <div class="photo-frame">
               <img
@@ -58,73 +65,89 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
                 alt="Suganya Profile"
               />
             </div>
+
+            <!-- 💬 Quote Dialogue Box -->
+            <div class="quote-box">
+              <p>“I don’t just showcase Responsible AI — I build it.<br>Let’s make one for your product.”</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 🔵 Floating AI Bridge Dots -->
+  <div class="ai-bridge">
+    <span></span><span></span><span></span>
+  </div>
+
   <!-- ==========================================================
   💼 WHAT I DO SECTION – Refined Layout
   =========================================================== -->
-  <section class="cards">
+  <section id="what-i-do" class="section">
     <h2 class="section-title">What I Do</h2>
     <p class="section-subtitle">
-      Building Responsible AI Products that balance innovation, safety, and trust.
+      Designing AI with a conscience — balancing innovation, safety, and human trust.
     </p>
-  
-    <div class="card-container">
-  
-      <!-- 🔹 My Projects Card -->
-      <a href="{{ url_for('projects') }}" class="card-link">
-        <div class="card">
-          <div class="icon-wrapper">
-            <img src="{{ url_for('static', filename='icons/projects.png') }}" alt="Projects Icon">
-          </div>
-          <h3>My Projects</h3>
-          <p>Portfolio AI products — built with care to balance creativity, ethics, and user trust.</p>
-        </div>
-      </a>
-  
-      <!-- 🔹 My Governance Work Card -->
-      <a href="{{ url_for('governance') }}" class="card-link">
-        <div class="card">
-          <div class="icon-wrapper">
-            <img src="{{ url_for('static', filename='icons/governance.png') }}" alt="Governance Icon">
-          </div>
-          <h3>My Governance Work</h3>
-          <p>Designing Responsible AI frameworks and auditing systems aligned with DPDP, GDPR, and ISO standards.</p>
-        </div>
-      </a>
-  
-      <!-- 🔹 My Education Card -->
-      <a href="{{ url_for('education') }}" class="card-link">
-        <div class="card">
-          <div class="icon-wrapper">
-            <img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Education Icon">
-          </div>
-          <h3>My Education</h3>
-          <p>MBA in IT Management, PGP in AIML, and certifications in Product Management and AI Governance.</p>
-        </div>
-      </a>
-  
+
+    <div class="cards-container">
+      <!-- 🌼 Project Card -->
+      <div class="info-card">
+        <img src="{{ url_for('static', filename='icons/projects.png') }}" alt="Projects Icon" class="card-icon">
+        <h3>My Projects</h3>
+        <p>
+          End-to-end AI products I’ve designed and developed — uniting creativity with responsibility.
+          Each project proves that innovation can be ethical, scalable, and deeply human-centered.
+        </p>
+      </div>
+
+      <!-- 🌼 Governance Card -->
+      <div class="info-card">
+        <img src="{{ url_for('static', filename='icons/governance.png') }}" alt="Governance Icon" class="card-icon">
+        <h3>My Governance Work</h3>
+        <p>
+          Developed Responsible AI governance frameworks and audit pipelines aligned with global standards
+          (DPDP, GDPR, ISO). Helping teams embed fairness, transparency, and security into every layer of AI systems.
+        </p>
+      </div>
+
+      <!-- 🌼 Education Card -->
+      <div class="info-card">
+        <img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Education Icon" class="card-icon">
+        <h3>My Education</h3>
+        <p>
+          A blend of business strategy and AI expertise — MBA in IT Management, PGP in AIML, and certifications
+          in Product Management and AI Governance. This fusion enables me to lead both ethically and effectively.
+        </p>
+      </div>
     </div>
+
+    <!-- 🌸 Collaboration Invitation -->
+    <div class="collaboration-note">
+      <p>
+        <strong>Open to opportunities</strong> in Responsible AI Product Management and Governance Consulting.
+      </p>
+    </div>
+
+    <!-- 🌺 Signature Line -->
+    <footer class="signature">
+      <p>
+        Dedicated to all mothers 🌸 <br>
+        Built with responsibility, creativity, and heart — by <strong>Suganya P</strong> 🌷<br>
+        Believing that technology, like motherhood, should always nurture and protect.
+      </p>
+      <p class="visitor-count">
+        👁️ Visitors: <strong>{{ visits }}</strong><br>
+        <small>No personal data collected — visitor count only.</small>
+      </p>
+    </footer>
   </section>
 
   <!-- ==========================================================
-  🌿 FOOTER SECTION – Visitor Count + Floating Feedback Widget
+  🌿 FOOTER SECTION – Feedback Widget
   =========================================================== -->
   <footer>
     <div class="footer-container">
-      <!-- 🌸 Dedication Line -->
-      <p>Dedicated to all mothers 🌸 Built with responsibility, creativity, and heart by
-        <strong>Suganya P</strong> 🌼
-      </p>
-
-      <!-- 👁️ Visitor Count -->
-      <p class="visitors">👁️ Visitors: <strong>{{ visits }}</strong></p>
-      <p class="note">No personal data collected — visitor count only.</p>
-
       <!-- ==========================================================
           💬 FLOATING FEEDBACK WIDGET (Bottom Right)
       =========================================================== -->
@@ -171,6 +194,5 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
       feedbackToggle.style.display = "block";
     });
   </script>
-
 </body>
 </html>
