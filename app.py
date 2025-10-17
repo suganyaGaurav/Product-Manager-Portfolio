@@ -1,16 +1,17 @@
 # ==========================================================
 # 🌸 Suganya P | PM Portfolio Website
 # Author: Suganya P
-# Purpose: Flask backend for personal portfolio website
+# Purpose: Flask backend for personal portfolio website (Render Ready)
 # ==========================================================
 
-from flask import Flask, render_template, send_from_directory, request, redirect, url_for
-import os, json, requests  # Added 'requests' for Google Sheets API call
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for, session
+import os, json
 
 # ==========================================================
 # ⚙️ APP INITIALIZATION
 # ==========================================================
 app = Flask(__name__, static_folder='assets', static_url_path='/static')
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "default_secret_key")  # Required for session handling
 
 # ==========================================================
 # 📊 VISITOR COUNTER
@@ -34,67 +35,57 @@ def update_visits():
     return count
 
 # ==========================================================
-# 🏠 HOMEPAGE
+# 🏠 MAIN ROUTES
 # ==========================================================
 @app.route('/')
 def home():
     visits = update_visits()
     return render_template('index.html', visits=visits)
 
-# ==========================================================
-# 💼 PROJECTS PAGE
-# ==========================================================
 @app.route('/projects')
 def projects():
     visits = get_visits()
     return render_template('projects.html', visits=visits)
 
-# ==========================================================
-# 🎓 EDUCATION PAGE
-# ==========================================================
 @app.route('/education')
 def education():
     visits = get_visits()
     return render_template('education.html', visits=visits)
 
-# ==========================================================
-# 🧭 GOVERNANCE PAGE
-# ==========================================================
 @app.route('/governance')
 def governance():
     visits = get_visits()
     return render_template('governance.html', visits=visits)
 
 # ==========================================================
-# 📂 SERVE PROJECT PDFS
+# 📂 PDF SERVING ROUTES
 # ==========================================================
 @app.route('/pdfs/<path:filename>')
 def serve_pdf(filename):
     pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs')
     return send_from_directory(pdf_dir, filename)
 
-# ==========================================================
-# 🧾 GOVERNANCE PDF VIEWER
-# ==========================================================
 @app.route('/pdfs/governance/<path:filename>')
 def serve_governance_pdf(filename):
     pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs', 'governance')
     return send_from_directory(pdf_dir, filename)
 
+@app.route('/view_resume')
+def view_resume():
+    pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs')
+    return send_from_directory(pdf_dir, 'resume.pdf')
+
 # ==========================================================
-# 💬 FEEDBACK SUBMISSION (Floating Widget)
+# 💬 FEEDBACK SYSTEM (LOCAL STORAGE ONLY)
 # ==========================================================
 FEEDBACK_FILE = os.path.join(app.root_path, 'assets', 'data', 'feedback.json')
-GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzC0N9tH--UiUPiIN7aeDdMisOB3JCCpsvV4LKQyTvSdyGsQ8IMYQ_MCLfGCRbCAHWn/exec"
 
 @app.route('/submit_feedback', methods=['POST'])
 def submit_feedback():
-    """Handles feedback submission from the floating widget,
-    saves locally, and also sends data to Google Sheets via Apps Script."""
-    
+    """Handles feedback submission and saves locally."""
     os.makedirs(os.path.dirname(FEEDBACK_FILE), exist_ok=True)
 
-    # Load existing feedback from JSON
+    # Load existing feedback data
     feedback_data = []
     if os.path.exists(FEEDBACK_FILE):
         with open(FEEDBACK_FILE, 'r') as f:
@@ -112,22 +103,12 @@ def submit_feedback():
         "feedback": feedback_message
     }
 
-    # Save locally (backup)
+    # Save locally
     feedback_data.append(new_entry)
     with open(FEEDBACK_FILE, 'w') as f:
         json.dump(feedback_data, f, indent=2)
 
-    # Send data to Google Sheet via Apps Script Web App
-    try:
-        response = requests.post(GOOGLE_SHEET_WEBAPP_URL, data=new_entry, timeout=5)
-        if response.status_code == 200:
-            print("✅ Feedback successfully sent to Google Sheets.")
-        else:
-            print(f"⚠️ Google Sheet logging failed. Status: {response.status_code}")
-    except Exception as e:
-        print(f"⚠️ Error sending feedback to Google Sheets: {e}")
-
-    # Redirect to thank-you page
+    print("✅ Feedback saved locally.")
     return redirect(url_for('thank_you'))
 
 # ==========================================================
@@ -139,16 +120,54 @@ def thank_you():
     return render_template('thankyou.html')
 
 # ==========================================================
-# 📄 RESUME VIEW ROUTE (Opens in Browser)
+# 🔒 ADMIN LOGIN & FEEDBACK VIEWER
 # ==========================================================
-@app.route('/view_resume')
-def view_resume():
-    """Opens the resume PDF directly in a new browser tab instead of downloading."""
-    pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs')
-    return send_from_directory(pdf_dir, 'resume.pdf')
+ADMIN_KEY = os.getenv("ADMIN_KEY", "MuruganBlessMeAlways")  # secure secret key
+
+@app.route('/admin-login', methods=['GET', 'POST'])
+def admin_login():
+    """Secure login for admin to view feedback."""
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if password == ADMIN_KEY:
+            session['admin'] = True
+            return redirect(url_for('view_feedback'))
+        else:
+            return "<h3 style='color:red; text-align:center;'>⚠️ Wrong password! Try again.</h3>"
+    return '''
+        <div style="text-align:center; margin-top:80px; font-family:Poppins; color:#fff; background:#0B2B5C; padding:40px; border-radius:12px;">
+            <h2>🔐 Admin Login</h2>
+            <form method="POST">
+                <input type="password" name="password" placeholder="Enter Admin Key"
+                style="padding:8px; border-radius:6px; border:none; margin-top:10px;" required>
+                <br><br>
+                <button type="submit"
+                style="padding:8px 16px; border-radius:8px; background:#1e4fff; color:white; border:none;">Login</button>
+            </form>
+        </div>
+    '''
+
+@app.route('/view_feedback')
+def view_feedback():
+    """Displays feedback entries only if admin is logged in."""
+    if not session.get('admin'):
+        return redirect(url_for('admin_login'))
+
+    if not os.path.exists(FEEDBACK_FILE):
+        return "<h3 style='color:#fff; text-align:center;'>No feedback found yet 🌸</h3>"
+
+    with open(FEEDBACK_FILE, 'r') as f:
+        feedback_data = json.load(f)
+
+    feedback_html = "<div style='font-family:Poppins; background:#061A3A; color:#fff; padding:40px;'>"
+    feedback_html += "<h2>💬 Collected Feedback</h2><hr>"
+    for entry in feedback_data:
+        feedback_html += f"<p><strong>{entry['name']}</strong> ({entry['email']})<br>🌸 {entry['feedback']}</p><hr>"
+    feedback_html += "</div>"
+    return feedback_html
 
 # ==========================================================
-# 🚀 RUN FLASK SERVER
+# 🚀 RUN FLASK SERVER (LOCAL / RENDER)
 # ==========================================================
 if __name__ == '__main__':
     app.run(debug=True)
