@@ -125,25 +125,24 @@ def thank_you():
 @app.route('/admin-login', methods=['GET', 'POST'])
 def admin_login():
     """Secure login for admin to view feedback."""
-    # ✅ Load admin key at runtime from Render environment
     ADMIN_KEY = os.environ.get('ADMIN_KEY', 'MuruganBlessMeAlways')
-    print("🔍 Loaded ADMIN_KEY:", ADMIN_KEY)  # Check in Render logs
+    print("🔍 Loaded ADMIN_KEY:", ADMIN_KEY)
 
     if request.method == 'POST':
-        password = request.form.get('password')
+        password = request.form.get('password').strip()
+        print("🧩 Entered Password:", password)  # log what came from form
         if password == ADMIN_KEY:
             session['admin'] = True
             return redirect(url_for('view_feedback'))
         else:
             return "<h3 style='color:red; text-align:center;'>⚠️ Wrong password! Try again.</h3>"
 
-    # Login Form (styled for your theme)
     return '''
         <div style="text-align:center; margin-top:80px; font-family:Poppins; color:#fff; 
                     background:linear-gradient(160deg, #0A1930 0%, #1E3A8A 100%);
                     padding:40px; border-radius:12px; width:60%; margin:auto; box-shadow:0 0 15px rgba(130,207,255,0.3);">
             <h2>🔐 Admin Login</h2>
-            <form method="POST">
+            <form method="POST" action="/admin-login">
                 <input type="password" name="password" placeholder="Enter Admin Key"
                 style="padding:8px; border-radius:6px; border:none; margin-top:10px; width:60%;
                        background:rgba(255,255,255,0.15); color:#fff; text-align:center;" required>
@@ -154,6 +153,7 @@ def admin_login():
             </form>
         </div>
     '''
+
 
 @app.route('/view_feedback')
 def view_feedback():
