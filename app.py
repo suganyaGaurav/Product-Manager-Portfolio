@@ -131,6 +131,7 @@ def admin_login():
         password = request.form.get('password')
         if password == ADMIN_KEY:
             session['admin'] = True
+            print("🔍 Loaded ADMIN_KEY from environment:", ADMIN_KEY)
             return redirect(url_for('view_feedback'))
         else:
             return "<h3 style='color:red; text-align:center;'>⚠️ Wrong password! Try again.</h3>"
