@@ -14,7 +14,7 @@ app = Flask(__name__, static_folder='assets', static_url_path='/static')
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "default_secret_key")  # Required for session handling
 
 # ==========================================================
-# 📊 VISITOR COUNTER
+# 📊 VISITOR COUNTER (LOCAL JSON STORAGE)
 # ==========================================================
 VISIT_FILE = os.path.join(app.root_path, 'assets', 'data', 'visits.json')
 
@@ -28,32 +28,36 @@ def get_visits():
         return json.load(f).get("count", 0)
 
 def update_visits():
-    """Increments visit count and updates the JSON file."""
+    """Increments visit count and updates JSON file."""
     count = get_visits() + 1
     with open(VISIT_FILE, 'w') as f:
         json.dump({"count": count}, f)
     return count
 
 # ==========================================================
-# 🏠 MAIN ROUTES
+# 🏠 MAIN PAGE ROUTES
 # ==========================================================
 @app.route('/')
 def home():
+    """Landing page for portfolio."""
     visits = update_visits()
     return render_template('index.html', visits=visits)
 
 @app.route('/projects')
 def projects():
+    """Projects showcase page."""
     visits = get_visits()
     return render_template('projects.html', visits=visits)
 
 @app.route('/education')
 def education():
+    """Education and certifications page."""
     visits = get_visits()
     return render_template('education.html', visits=visits)
 
 @app.route('/governance')
 def governance():
+    """AI Governance and Responsible AI page."""
     visits = get_visits()
     return render_template('governance.html', visits=visits)
 
@@ -62,27 +66,37 @@ def governance():
 # ==========================================================
 @app.route('/pdfs/<path:filename>')
 def serve_pdf(filename):
+    """Serves general PDFs (e.g., project or governance files)."""
     pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs')
     return send_from_directory(pdf_dir, filename)
 
 @app.route('/pdfs/governance/<path:filename>')
 def serve_governance_pdf(filename):
+    """Serves PDFs from the governance folder."""
     pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs', 'governance')
     return send_from_directory(pdf_dir, filename)
 
 @app.route('/view_resume')
 def view_resume():
+    """Serves the resume PDF and opens it in a new tab."""
     pdf_dir = os.path.join(app.root_path, 'assets', 'pdfs')
+    file_path = os.path.join(pdf_dir, 'resume.pdf')
+
+    # ✅ Graceful fallback if file is missing
+    if not os.path.exists(file_path):
+        return "<h3 style='text-align:center; color:#ffb6d6;'>⚠️ Resume file not found. Please upload 'resume.pdf' under assets/pdfs/.</h3>"
+
+    print(f"📄 Serving resume from: {file_path}")
     return send_from_directory(pdf_dir, 'resume.pdf')
 
 # ==========================================================
-# 💬 FEEDBACK SYSTEM (LOCAL STORAGE ONLY)
+# 💬 FEEDBACK SYSTEM (LOCAL JSON STORAGE)
 # ==========================================================
 FEEDBACK_FILE = os.path.join(app.root_path, 'assets', 'data', 'feedback.json')
 
 @app.route('/submit_feedback', methods=['POST'])
 def submit_feedback():
-    """Handles feedback submission and saves locally."""
+    """Handles feedback form submission and saves locally."""
     os.makedirs(os.path.dirname(FEEDBACK_FILE), exist_ok=True)
 
     feedback_data = []
@@ -108,16 +122,18 @@ def submit_feedback():
 # ==========================================================
 @app.route('/thankyou')
 def thank_you():
+    """Simple acknowledgment page after feedback submission."""
     return render_template('thankyou.html')
 
 # ==========================================================
-# 🔒 ADMIN LOGIN & FEEDBACK VIEWER
+# 🔒 ADMIN LOGIN (SECURED FEEDBACK DASHBOARD)
 # ==========================================================
 @app.route('/admin-login', methods=['GET', 'POST'])
 def admin_login():
-    """Secure login for admin to view feedback."""
+    """Secure login for admin to view collected feedback."""
     admin_key_env = os.getenv("ADMIN_KEY", "MuruganBlessMeAlways")
-    ADMIN_KEY = admin_key_env.strip()  # Clean hidden spaces/newlines
+    ADMIN_KEY = admin_key_env.strip()
+
     print("🔍 Loaded ADMIN_KEY from environment:", repr(ADMIN_KEY))
 
     if request.method == 'POST':
@@ -153,7 +169,7 @@ def admin_login():
 # ==========================================================
 @app.route('/view_feedback')
 def view_feedback():
-    """Displays feedback entries only if admin is logged in."""
+    """Displays feedback entries (admin only)."""
     if not session.get('admin'):
         return redirect(url_for('admin_login'))
 
@@ -193,6 +209,7 @@ def view_feedback():
 # ==========================================================
 @app.route('/logout')
 def logout():
+    """Logs out admin and redirects to home."""
     session.pop('admin', None)
     return redirect(url_for('home'))
 
