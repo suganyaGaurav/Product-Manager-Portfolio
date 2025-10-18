@@ -20,8 +20,8 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   <header class="top-bar">
     <div class="welcome-text"><b>Responsible AI</b></div>
     <div class="nav-links">
-      <a href="https://www.linkedin.com/in/suganya-purushothaman-aiml/" class="link"><i>LinkedIn</i></a>
-      <a href="{{ url_for('static', filename='resume.pdf') }}" class="link"><i>Resume</i></a>
+      <a href="https://www.linkedin.com" class="link"><i>LinkedIn</i></a>
+      <a href="{{ url_for('view_resume') }}" target="_blank" class="link"><i>Resume</i></a>
     </div>
   </header>
 
@@ -91,35 +91,42 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
     </p>
 
     <div class="cards-container">
+      
       <!-- 🌼 Project Card -->
-      <div class="info-card">
-        <img src="{{ url_for('static', filename='icons/projects.png') }}" alt="Projects Icon" class="card-icon">
-        <h3>My Projects</h3>
-        <p>
-          End-to-end AI products I’ve designed and developed — uniting creativity with responsibility.
-          Each project proves that innovation can be ethical, scalable, and deeply human-centered.
-        </p>
-      </div>
+      <a href="{{ url_for('projects') }}" class="info-card-link">
+        <div class="info-card">
+          <img src="{{ url_for('static', filename='icons/projects.png') }}" alt="Projects Icon" class="card-icon">
+          <h3>My Projects</h3>
+          <p>
+            End-to-end AI products I’ve designed and developed — uniting creativity with responsibility.
+            Each project proves that innovation can be ethical, scalable, and deeply human-centered.
+          </p>
+        </div>
+      </a>
 
       <!-- 🌼 Governance Card -->
-      <div class="info-card">
-        <img src="{{ url_for('static', filename='icons/governance.png') }}" alt="Governance Icon" class="card-icon">
-        <h3>My Governance Work</h3>
-        <p>
-          Developed Responsible AI governance frameworks and audit pipelines aligned with global standards
-          (DPDP, GDPR, ISO). Helping teams embed fairness, transparency, and security into every layer of AI systems.
-        </p>
-      </div>
+      <a href="{{ url_for('governance') }}" class="info-card-link">
+        <div class="info-card">
+          <img src="{{ url_for('static', filename='icons/governance.png') }}" alt="Governance Icon" class="card-icon">
+          <h3>My Governance Work</h3>
+          <p>
+            Developed Responsible AI governance frameworks and audit pipelines aligned with global standards
+            (DPDP, GDPR, ISO). Helping teams embed fairness, transparency, and security into every layer of AI systems.
+          </p>
+        </div>
+      </a>
 
       <!-- 🌼 Education Card -->
-      <div class="info-card">
-        <img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Education Icon" class="card-icon">
-        <h3>My Education</h3>
-        <p>
-          A blend of business strategy and AI expertise — MBA in IT Management, PGP in AIML, and certifications
-          in Product Management and AI Governance. This fusion enables me to lead both ethically and effectively.
-        </p>
-      </div>
+      <a href="{{ url_for('education') }}" class="info-card-link">
+        <div class="info-card">
+          <img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Education Icon" class="card-icon">
+          <h3>My Education</h3>
+          <p>
+            A blend of business strategy and AI expertise — MBA in IT Management, PGP in AIML, and certifications
+            in Product Management and AI Governance. This fusion enables me to lead both ethically and effectively.
+          </p>
+        </div>
+      </a>
     </div>
 
     <!-- 🌸 Collaboration Invitation -->
