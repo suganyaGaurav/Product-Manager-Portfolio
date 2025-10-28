@@ -1,271 +1,206 @@
 /* ==========================================================
-🌸 Suganya P | Projects Page Styles
-Unified Soft Blue Theme | 3 Cards in One Glance | Modal PDF Viewer
+🌸 Suganya P | Projects Page Styles (Case Study Edition)
+Simple & Clean Layout
 ========================================================== */
 
-/* ==========================================================
-🌌 UNIVERSAL PORTFOLIO THEME – Blue Audit Tone
-========================================================== */
 :root {
-  --bg-gradient: linear-gradient(160deg, #0A1930 0%, #1E3A8A 100%);
-  --card-bg: #82CAFF;
-  --text-primary: #ffffff;
-  --text-secondary: #aeb8ff;
-  --accent-blue: #ffffff;
-  --hover-blue: linear-gradient(90deg, #6ba8ff, #8ec5ff);
-  --shadow-blue: 0 6px 14px rgba(79, 140, 255, 0.5);
+  --bg-gradient: radial-gradient(circle at 20% 20%, #1E3A8A 0%, #0A1930 100%);
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --text-light: #E2E8F0;
+  --text-bright: #FFFFFF;
+  --accent: #60A5FA;
+  --border-soft: rgba(255, 255, 255, 0.1);
+  --radius: 20px;
 }
 
 /* ==========================================================
-🌿 BASE STYLES
+🌌 BASE LAYOUT
 ========================================================== */
 body {
   font-family: "Poppins", sans-serif;
   background: var(--bg-gradient);
+  color: var(--text-light);
   margin: 0;
-  color: var(--text-primary);
-  overflow-x: hidden;
 }
 
 /* ==========================================================
-🔹 HEADER (Same as Index)
+🔹 HEADER
 ========================================================== */
 .top-bar {
-  background: #000;
-  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 40px;
+  padding: 15px 60px;
 }
 
 .top-bar a {
-  color: white;
+  color: var(--text-light);
   text-decoration: none;
   margin-left: 20px;
-  font-weight: 500;
   transition: 0.3s;
+  font-weight: 500;
 }
 
 .top-bar a:hover {
-  color: #a2cffe;
-}
-
-.welcome-text {
-  font-size: 1.8rem;
-  font-weight: 600;
+  color: var(--accent);
 }
 
 /* ==========================================================
-💼 PROJECTS SECTION – Horizontal Cards
+🔒 IP NOTE (Top-right Corner)
 ========================================================== */
-.projects-section {
+.ip-note {
+  position: absolute;
+  top: 90px;
+  right: 40px;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cfd8ef;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* ==========================================================
+💼 PROJECTS LAYOUT (KittyLit Left | BroBuddy & KuttyDub Right)
+========================================================== */
+.projects-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 3 projects side by side */
-  gap: 2rem;
-  padding: 60px 8%;
-  text-align: center;
-  justify-items: center;
-  align-items: start;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 25px;
+  padding: 100px 80px 60px;
 }
 
-/* ==========================================================
-📘 INDIVIDUAL PROJECT CARD
-========================================================== */
+/* 🩵 KittyLit spans full height on left side */
+.kittylit {
+  grid-row: 1 / span 2;
+}
+
+/* Project card shared styling */
 .project-card {
   background: var(--card-bg);
-  color: #000;
-  border-radius: 16px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  padding: 25px 20px;
-  width: 100%;
-  max-width: 500px;
-  height: 560px; /* ✅ FIXED HEIGHT */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* ✅ Keeps content aligned neatly */
+  border-radius: var(--radius);
+  border: 1px solid var(--border-soft);
+  padding: 30px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease both;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
 }
 
 .project-card h2 {
-  font-size: 1.5rem;
-  color: #000000;
-  margin-bottom: 6px;
+  color: var(--text-bright);
+  font-size: 1.4rem;
+  margin-bottom: 5px;
 }
 
-.tagline {
-  font-weight: 600;
-  color: #000000;
-  margin-bottom: 8px;
-}
-
-.desc {
+.project-card .role {
+  color: var(--accent);
   font-size: 0.9rem;
-  color: #333;
+  margin-bottom: 10px;
+}
+
+.project-card p, 
+.project-card li {
+  font-size: 0.9rem;
+  color: var(--text-light);
   line-height: 1.5;
-  margin-bottom: 1.2rem;
-  padding: 0 5px;
+}
+
+.project-card ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.project-card ul li {
+  margin-bottom: 8px;
 }
 
 /* ==========================================================
 🔘 BUTTONS
 ========================================================== */
 .btn-group {
+  margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 1rem;
+  gap: 10px;
 }
 
-.btn-group button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #4f8cff, #6ba8ff);
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: var(--shadow-blue);
-  transition: 0.3s ease;
-}
-
-.btn-group button:hover {
-  transform: translateY(-3px);
-}
-
-.btn-group a {
-  padding: 8px 14px;
-  border-radius: 25px;
-  background: linear-gradient(90deg, #4f8cff, #6ba8ff);
-  color: white;
-  font-weight: 500;
-  text-decoration: none;
+.btn-group a,
+.btn {
   display: inline-block;
-  box-shadow: var(--shadow-blue);
-  transition: 0.3s ease;
-}
-
-.btn-group a:hover {
-  transform: translateY(-3px);
-}
-
-/* ==========================================================
-🖼️ PROJECT IMAGES
-========================================================== */
-.visual img {
-  width: 100%;
-  max-width: 280px;
+  background: linear-gradient(90deg, #60A5FA, #93C5FD);
+  color: #0A1930;
+  padding: 8px 16px;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  margin: 10px auto;
-  display: block;
-}
-
-/* ==========================================================
-🧩 GOVERNANCE NOTE
-========================================================== */
-.governance-note {
-  font-size: 0.9rem;
-  color: #333;
-  margin-top: 8px;
-  font-style: italic;
-}
-
-/* ==========================================================
-🪟 MODAL VIEWER – Secure View
-========================================================== */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: rgba(255,255,255,0.96);
-  border-radius: 14px;
-  width: 80%;
-  max-width: 900px;
-  height: 80%;
-  position: relative;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
-  overflow: hidden;
-}
-
-.modal-content iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: #FF6B6B;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
-  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
   transition: 0.3s;
 }
 
-.close-btn:hover {
-  background: #E05656;
+.btn-group a:hover,
+.btn:hover {
+  background: #BFDBFE;
+  transform: translateY(-3px);
 }
 
 /* ==========================================================
-🔒 VIEW-ONLY WATERMARK
-========================================================== */
-.view-only-watermark {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  color: #555;
-  font-size: 0.85rem;
-  font-weight: 500;
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* ==========================================================
-🌿 FOOTER (Same as Index)
+🌿 FOOTER
 ========================================================== */
 footer {
-  background: linear-gradient(135deg, #E3EDFF 0%, #DDE9FF 80%);
-  padding: 25px 0;
-  color: #222;
   text-align: center;
-  box-shadow: 0 -2px 10px rgba(160, 190, 255, 0.3);
+  padding: 30px;
+  color: #A5B4FC;
+  border-top: 1px solid var(--border-soft);
+  font-size: 0.9rem;
 }
 
 /* ==========================================================
-📱 RESPONSIVE DESIGN
+✨ ANIMATION (Fade Up)
 ========================================================== */
-@media (max-width: 1000px) {
-  .projects-section {
-    grid-template-columns: repeat(2, 1fr);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 700px) {
-  .projects-section {
+/* ==========================================================
+📱 RESPONSIVE (Mobile-Friendly)
+========================================================== */
+@media (max-width: 1000px) {
+  .projects-layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 40px 30px;
+  }
+
+  .kittylit {
+    grid-row: auto;
+  }
+
+  .ip-note {
+    position: relative;
+    width: auto;
+    top: 0;
+    right: 0;
+    margin: 0 30px 20px;
+  }
+
+  .project-card {
+    padding: 25px;
   }
 }
