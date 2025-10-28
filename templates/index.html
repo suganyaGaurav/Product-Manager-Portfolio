@@ -8,8 +8,6 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suganya P | AI Product Manager</title>
-
-  <!-- ✅ Corrected CSS Path -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -26,63 +24,52 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   </header>
 
   <!-- ==========================================================
-    🌈 HERO SECTION – Two Column Layout
+    🌈 HERO SECTION – Balanced 3-Column Layout
   =========================================================== -->
   <section class="hero">
     <div class="hero-container">
-      
-      <!-- LEFT SIDE: Responsible PM Image with Animated Glow + Orbits -->
-      <div class="hero-left">
-        <div class="orbit-container">
-          <div class="orbit orbit1"></div>
-          <div class="orbit orbit2"></div>
-        </div>
 
+      <!-- LEFT SIDE: Circular Image -->
+      <div class="hero-left">
         <img
           src="{{ url_for('static', filename='images/suganya_Responsible_PM.png') }}"
           alt="Responsible AI Product Manager"
-          class="hero-image-left animated-circle"
+          class="hero-image-left"
         />
       </div>
-  
-      <!-- RIGHT SIDE: Hero Card -->
-      <div class="hero-right">
+
+      <!-- CENTER: Hello Section -->
+      <div class="hero-center">
         <div class="hero-card">
           <div class="hero-text">
             <h1>Hello! I’m Suganya.</h1>
             <h2>Responsible AI Consultant & AI Product Manager</h2>
-            <p>
-              I help build trustworthy, ethical, and secure AI products that are transparent,
-              human-centered, and aligned with responsible innovation.
-            </p>
-          </div>
 
-          <!-- 🌸 Profile Photo + Quote Bubble -->
-          <div class="hero-image">
-            <div class="photo-frame">
-              <img
-                src="{{ url_for('static', filename='images/profile.jpg') }}"
-                alt="Suganya Profile"
-              />
-            </div>
-
-            <!-- 💬 Quote Dialogue Box -->
-            <div class="quote-box">
-              <p>“I don’t just showcase Responsible AI — I build it.<br>Let’s make one for your product.”</p>
-            </div>
+            <ul>
+              <li>I design and build <b>trustworthy, ethical, and secure AI products</b> that are transparent, human-centered, and aligned with responsible innovation.</li>
+              <li><b>AI success isn’t measured once</b> — it evolves through data quality, trust, and adaptation.</li>
+              <li>I craft AI systems that remain <b>accurate, cost-efficient, and governance-aligned</b>, ensuring long-term reliability and safety.</li>
+              <li>My goal is to make <b>Responsible AI scalable and human-centered</b> — balancing innovation with integrity.</li>
+            </ul>
           </div>
         </div>
       </div>
+
+      <!-- RIGHT SIDE: Profile + Quote -->
+      <div class="hero-right">
+        <div class="photo-frame">
+          <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Suganya Profile" />
+        </div>
+        <div class="quote-box">
+          <p>“I don’t just talk about Responsible AI — I build it, scale it, and sustain it.”</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- 🔵 Floating AI Bridge Dots -->
-  <div class="ai-bridge">
-    <span></span><span></span><span></span>
-  </div>
-
   <!-- ==========================================================
-  💼 WHAT I DO SECTION – Refined Layout
+  💼 WHAT I DO SECTION
   =========================================================== -->
   <section id="what-i-do" class="section">
     <h2 class="section-title">What I Do</h2>
@@ -91,52 +78,35 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
     </p>
 
     <div class="cards-container">
-      
-      <!-- 🌼 Project Card -->
       <a href="{{ url_for('projects') }}" class="info-card-link">
         <div class="info-card">
           <img src="{{ url_for('static', filename='icons/projects.png') }}" alt="Projects Icon" class="card-icon">
           <h3>My Projects</h3>
-          <p>
-            End-to-end AI products I’ve designed and developed — uniting creativity with responsibility.
-            Each project proves that innovation can be ethical, scalable, and deeply human-centered.
-          </p>
+          <p>End-to-end AI products I’ve designed and developed — uniting creativity with responsibility.</p>
         </div>
       </a>
 
-      <!-- 🌼 Governance Card -->
       <a href="{{ url_for('governance') }}" class="info-card-link">
         <div class="info-card">
           <img src="{{ url_for('static', filename='icons/governance.png') }}" alt="Governance Icon" class="card-icon">
           <h3>My Governance Work</h3>
-          <p>
-            Developed Responsible AI governance frameworks and audit pipelines aligned with global standards
-            (DPDP, GDPR, ISO). Helping teams embed fairness, transparency, and security into every layer of AI systems.
-          </p>
+          <p>Developed Responsible AI governance frameworks aligned with global standards (DPDP, GDPR, ISO).</p>
         </div>
       </a>
 
-      <!-- 🌼 Education Card -->
       <a href="{{ url_for('education') }}" class="info-card-link">
         <div class="info-card">
           <img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Education Icon" class="card-icon">
           <h3>My Education</h3>
-          <p>
-            A blend of business strategy and AI expertise — MBA in IT Management, PGP in AIML, and certifications
-            in Product Management and AI Governance. This fusion enables me to lead both ethically and effectively.
-          </p>
+          <p>MBA in IT Management, PGP in AIML, and certifications in Product Management and AI Governance.</p>
         </div>
       </a>
     </div>
 
-    <!-- 🌸 Collaboration Invitation -->
     <div class="collaboration-note">
-      <p>
-        <strong>Open to opportunities</strong> in Responsible AI Product Management and Governance Consulting.
-      </p>
+      <p><strong>Open to opportunities</strong> in Responsible AI Product Management and Governance Consulting.</p>
     </div>
 
-    <!-- 🌺 Signature Line -->
     <footer class="signature">
       <p>
         Dedicated to all mothers 🌸 <br>
@@ -155,21 +125,13 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   =========================================================== -->
   <footer>
     <div class="footer-container">
-      <!-- ==========================================================
-          💬 FLOATING FEEDBACK WIDGET (Bottom Right)
-      =========================================================== -->
       <div class="feedback-widget">
-        <!-- 💬 Toggle Button -->
         <button id="feedbackToggle" class="feedback-toggle">💬 Feedback</button>
-
-        <!-- 💌 Feedback Popup -->
         <div class="feedback-box" id="feedbackFormContainer">
           <div class="feedback-header">
             <span>💬 Share your feedback</span>
             <button id="closeFeedback" class="close-btn">✕</button>
           </div>
-
-          <!-- Feedback Form -->
           <form id="feedbackForm" action="/submit_feedback" method="POST">
             <input type="text" name="name" placeholder="Your Name" required />
             <input type="email" name="email" placeholder="Your Email ID" required />
@@ -182,20 +144,18 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   </footer>
 
   <!-- ==========================================================
-  🧠 SCRIPT – TOGGLE FEEDBACK FORM VISIBILITY
+  🧠 SCRIPT – FEEDBACK TOGGLE
   =========================================================== -->
   <script>
     const feedbackToggle = document.getElementById("feedbackToggle");
     const feedbackFormContainer = document.getElementById("feedbackFormContainer");
     const closeFeedback = document.getElementById("closeFeedback");
 
-    // 🌸 Open feedback box
     feedbackToggle.addEventListener("click", () => {
       feedbackFormContainer.style.display = "block";
       feedbackToggle.style.display = "none";
     });
 
-    // 🌸 Close feedback box
     closeFeedback.addEventListener("click", () => {
       feedbackFormContainer.style.display = "none";
       feedbackToggle.style.display = "block";
