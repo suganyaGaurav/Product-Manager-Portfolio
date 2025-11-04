@@ -1,6 +1,6 @@
 /* ==========================================================
-🌸 Suganya P | AI Product Manager Portfolio
-Refined Blue Theme • Compact Hero for Full-Screen Fit
+🌸 Suganya P | Responsible AI Product Manager Portfolio
+Refined Blue Theme • Story-Driven & Narrative Edition
 ========================================================== */
 
 /* ===== RESET & BASE STYLES ===== */
@@ -50,29 +50,29 @@ body {
 }
 
 /* ==========================================================
-🌈 HERO SECTION – Compact 3-column alignment
+🌈 HERO SECTION – 3-column balanced layout
 ========================================================== */
 .hero {
   width: 100%;
-  padding: 2.8rem 5% 1.8rem 5%; /* reduced vertical padding */
+  padding: 2.8rem 5% 1.8rem 5%;
   background: linear-gradient(to right, #081833, #0a214a);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0; /* prevent white gap */
+  margin-bottom: 0;
 }
 
 .hero-container {
   display: grid;
   grid-template-columns: 1fr 1.8fr 1fr;
-  gap: 2rem; /* tighter spacing */
+  gap: 2rem;
   max-width: 1400px;
   width: 100%;
   align-items: center;
 }
 
 /* ==========================================================
-LEFT SIDE (CIRCLE IMAGE)
+LEFT SIDE (SPIRAL / SYMBOLIC IMAGE)
 ========================================================== */
 .hero-left {
   display: flex;
@@ -82,7 +82,7 @@ LEFT SIDE (CIRCLE IMAGE)
 
 .hero-image-left {
   width: 100%;
-  max-width: 380px; /* reduced size */
+  max-width: 380px;
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12);
   transition: transform 0.4s ease;
@@ -94,7 +94,7 @@ LEFT SIDE (CIRCLE IMAGE)
 }
 
 /* ==========================================================
-CENTER (HELLO CARD)
+CENTER (STORY INTRODUCTION CARD)
 ========================================================== */
 .hero-center {
   display: flex;
@@ -105,7 +105,7 @@ CENTER (HELLO CARD)
 .hero-card {
   background: rgba(25, 45, 85, 0.65);
   border-radius: 18px;
-  padding: 2.2rem 2.5rem; /* reduced padding */
+  padding: 2.2rem 2.5rem;
   width: 100%;
   max-width: 880px;
   box-shadow: 0 3px 18px rgba(0, 0, 0, 0.4);
@@ -117,6 +117,7 @@ CENTER (HELLO CARD)
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
 }
 
+/* ===== Hero Text ===== */
 .hero-text h1 {
   font-size: 2.4rem;
   color: #ffffff;
@@ -142,6 +143,28 @@ CENTER (HELLO CARD)
   margin-top: 0.5rem;
 }
 
+/* 🌿 NEW: Story Intro Paragraph */
+.intro-line {
+  font-size: 1rem;
+  color: #cfdafc;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: left;
+  border-left: 3px solid #6da0ff;
+  padding-left: 10px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* 🌿 NEW: Soft Divider Under Hero */
+.section-divider {
+  width: 80%;
+  height: 1px;
+  margin: 2rem auto 1rem auto;
+  background: linear-gradient(to right, transparent, #6da0ff, transparent);
+  opacity: 0.6;
+  border-radius: 2px;
+}
+
 /* ==========================================================
 RIGHT SIDE (PHOTO + QUOTE)
 ========================================================== */
@@ -155,7 +178,7 @@ RIGHT SIDE (PHOTO + QUOTE)
 }
 
 .photo-frame img {
-  width: 180px; /* slightly smaller */
+  width: 180px;
   border-radius: 10px;
   border: 2px solid #bcd4ff;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
@@ -178,6 +201,20 @@ RIGHT SIDE (PHOTO + QUOTE)
   text-align: right;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   margin-top: 0.4rem;
+}
+
+/* ==========================================================
+🌿 NEW SECTION: TRANSITION QUOTE (Between Hero & What I Do)
+========================================================== */
+.transition-quote {
+  text-align: center;
+  padding: 2rem 10%;
+  font-style: italic;
+  color: #cfdafc;
+  font-size: 1.1rem;
+  background: linear-gradient(180deg, #0a1a36 0%, #0b2048 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ==========================================================
@@ -205,17 +242,22 @@ RESPONSIVE BEHAVIOR
   .quote-box {
     text-align: center;
   }
+
+  .transition-quote {
+    padding: 1.5rem 8%;
+    font-size: 1rem;
+  }
 }
 
 /* ==========================================================
 💼 WHAT I DO SECTION – Compact transition
 ========================================================== */
 .section {
-  padding: 20px 20px 40px 20px; /* tighter top padding */
+  padding: 20px 20px 40px 20px;
   text-align: center;
   margin-top: 0;
   background: linear-gradient(180deg, #081833 0%, #0b1f45 80%);
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* subtle divider */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .section-title {
@@ -272,7 +314,7 @@ RESPONSIVE BEHAVIOR
 }
 
 /* ==========================================================
-COLLABORATION NOTE + SIGNATURE
+COLLABORATION NOTE + SIGNATURE + CONTACT FOOTER
 ========================================================== */
 .collaboration-note {
   text-align: center;
@@ -289,7 +331,29 @@ COLLABORATION NOTE + SIGNATURE
   font-size: 0.95rem;
 }
 
+/* 🌸 Centered Email Footer */
+.contact-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: #dce4ff;
+  line-height: 1.6;
+}
+
+.email-link {
+  color: #8ab4ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.email-link:hover {
+  color: #bcd4ff;
+  text-shadow: 0 0 6px rgba(140, 200, 255, 0.6);
+}
+
 .visitor-count {
+  text-align: center;
   margin-top: 1rem;
   color: #e0e8ff;
   font-size: 0.9rem;
