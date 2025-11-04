@@ -1,15 +1,16 @@
 <!-- ==========================================================
-🌸 Suganya P | AI Product Manager Portfolio
-Refined Blue-Themed Layout • Responsible AI & Ethical Design
+🌸 Suganya P | Responsible AI Product Manager Portfolio
+Story-Driven Edition • Ethical Design & Narrative Flow
 ========================================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suganya P | AI Product Manager</title>
+  <title>Suganya P | Responsible AI Product Manager</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
   <!-- ==========================================================
@@ -24,12 +25,12 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   </header>
 
   <!-- ==========================================================
-    🌈 HERO SECTION – Balanced 3-Column Layout
+    🌈 HERO SECTION – 3-Column Story Layout
   =========================================================== -->
   <section class="hero">
     <div class="hero-container">
 
-      <!-- LEFT SIDE: Circular Image -->
+      <!-- LEFT SIDE: Spiral Visual / Symbol of Growth -->
       <div class="hero-left">
         <img
           src="{{ url_for('static', filename='images/suganya_Responsible_PM.png') }}"
@@ -38,12 +39,19 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
         />
       </div>
 
-      <!-- CENTER: Hello Section -->
+      <!-- CENTER: Story Introduction Card -->
       <div class="hero-center">
         <div class="hero-card">
           <div class="hero-text">
             <h1>Hello! I’m Suganya.</h1>
             <h2>Responsible AI Consultant & AI Product Manager</h2>
+
+            <!-- 🌿 STORY INTRO PARAGRAPH -->
+            <p class="intro-line">
+              My journey began in software testing — where I learned precision, accountability,
+              and integrity. Over time, I grew into building AI systems that protect privacy,
+              ensure fairness, and turn governance into trust.
+            </p>
 
             <ul>
               <li>I design and build <b>trustworthy, ethical, and secure AI products</b> that are transparent, human-centered, and aligned with responsible innovation.</li>
@@ -51,6 +59,8 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
               <li>I craft AI systems that remain <b>accurate, cost-efficient, and governance-aligned</b>, ensuring long-term reliability and safety.</li>
               <li>My goal is to make <b>Responsible AI scalable and human-centered</b> — balancing innovation with integrity.</li>
             </ul>
+
+            <div class="section-divider"></div>
           </div>
         </div>
       </div>
@@ -69,7 +79,14 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   </section>
 
   <!-- ==========================================================
-  💼 WHAT I DO SECTION
+  🌿 TRANSITION LINE – Subtle Bridge Between Hero & Next Section
+  =========================================================== -->
+  <section class="transition-quote">
+    <p>“Every stage of my career taught me that responsibility isn’t a value — it’s a product principle.”</p>
+  </section>
+
+  <!-- ==========================================================
+  💼 WHAT I DO SECTION – Overview of Roles
   =========================================================== -->
   <section id="what-i-do" class="section">
     <h2 class="section-title">What I Do</h2>
@@ -78,6 +95,8 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
     </p>
 
     <div class="cards-container">
+
+      <!-- 🔸 PROJECTS CARD -->
       <a href="{{ url_for('projects') }}" class="info-card-link">
         <div class="info-card">
           <img src="{{ url_for('static', filename='icons/projects.png') }}" alt="Projects Icon" class="card-icon">
@@ -86,6 +105,7 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
         </div>
       </a>
 
+      <!-- 🔸 GOVERNANCE CARD -->
       <a href="{{ url_for('governance') }}" class="info-card-link">
         <div class="info-card">
           <img src="{{ url_for('static', filename='icons/governance.png') }}" alt="Governance Icon" class="card-icon">
@@ -94,6 +114,7 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
         </div>
       </a>
 
+      <!-- 🔸 EDUCATION CARD -->
       <a href="{{ url_for('education') }}" class="info-card-link">
         <div class="info-card">
           <img src="{{ url_for('static', filename='icons/resume.png') }}" alt="Education Icon" class="card-icon">
@@ -103,10 +124,12 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
       </a>
     </div>
 
+    <!-- 🌸 COLLABORATION NOTE -->
     <div class="collaboration-note">
       <p><strong>Open to opportunities</strong> in Responsible AI Product Management and Governance Consulting.</p>
     </div>
 
+    <!-- 🌸 SIGNATURE FOOTER -->
     <footer class="signature">
       <p>
         Dedicated to all mothers 🌸 <br>
@@ -121,10 +144,12 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   </section>
 
   <!-- ==========================================================
-  🌿 FOOTER SECTION – Feedback Widget
+  🌿 FOOTER SECTION – Feedback Widget + Email Contact
   =========================================================== -->
   <footer>
     <div class="footer-container">
+
+      <!-- 💬 FEEDBACK WIDGET -->
       <div class="feedback-widget">
         <button id="feedbackToggle" class="feedback-toggle">💬 Feedback</button>
         <div class="feedback-box" id="feedbackFormContainer">
@@ -132,6 +157,8 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
             <span>💬 Share your feedback</span>
             <button id="closeFeedback" class="close-btn">✕</button>
           </div>
+
+          <!-- 🌿 FEEDBACK FORM -->
           <form id="feedbackForm" action="/submit_feedback" method="POST">
             <input type="text" name="name" placeholder="Your Name" required />
             <input type="email" name="email" placeholder="Your Email ID" required />
@@ -140,6 +167,17 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
           </form>
         </div>
       </div>
+
+      <!-- 🌸 CONTACT FOOTER -->
+      <div class="contact-footer">
+        <p>
+          📧 Reach me at 
+          <a href="mailto:sksugancool@gmail.com" class="email-link">
+            sksugancool@gmail.com
+          </a>
+        </p>
+      </div>
+
     </div>
   </footer>
 
@@ -147,6 +185,7 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
   🧠 SCRIPT – FEEDBACK TOGGLE
   =========================================================== -->
   <script>
+    // 🌸 Handle feedback widget open/close
     const feedbackToggle = document.getElementById("feedbackToggle");
     const feedbackFormContainer = document.getElementById("feedbackFormContainer");
     const closeFeedback = document.getElementById("closeFeedback");
@@ -161,5 +200,6 @@ Refined Blue-Themed Layout • Responsible AI & Ethical Design
       feedbackToggle.style.display = "block";
     });
   </script>
+
 </body>
 </html>
