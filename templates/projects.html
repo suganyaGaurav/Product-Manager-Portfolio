@@ -1,5 +1,5 @@
 <!-- ==========================================================
-🌸 Suganya P | Projects Page (Final Layout — Case Study Edition)
+🌸 Suganya P | Projects Page (GenAI Engineering Edition)
 ========================================================== -->
 <!DOCTYPE html>
 <html lang="en">
@@ -12,84 +12,119 @@
 </head>
 
 <body>
+
   <!-- ==========================================================
        🔹 NAVIGATION BAR
   =========================================================== -->
   <header class="top-bar">
-    <div class="welcome-text"><b>Building AI Products</b></div>
+    <div class="welcome-text"><b>Building GenAI Systems</b></div>
     <div class="nav-links">
       <a href="{{ url_for('home') }}" class="link">Home</a>
       <a href="{{ url_for('governance') }}" class="link">Governance</a>
+      <a href="https://github.com/suganyaGaurav" target="_blank" class="link">GitHub</a>
     </div>
   </header>
 
   <!-- ==========================================================
-       🛡️ IP NOTE (Top Right)
+       🔒 IP NOTE
   =========================================================== -->
   <div class="ip-note">
-    🔒 <strong>Note on IP:</strong> To safeguard the unique Intellectual Property and future scaling potential 
-    of these prototypes, the complete UIs and live demos are not publicly displayed. 
-    Focus on the available PRDs, Architecture Diagrams, and metrics.
+    🔒 <strong>Intellectual Property Note:</strong><br>
+    Full UI demos are not public to protect future deployments and scaling potential.<br>
+    Architecture diagrams, model links, and case studies are shared responsibly.
   </div>
 
   <!-- ==========================================================
-       💼 PROJECTS GRID (KittyLit | BroBuddy | KuttyDub)
+       🧩 MAIN PROJECT GRID (Final Wireframe Layout)
   =========================================================== -->
-  <section class="projects-layout">
-    
-    <!-- 🩵 KITTYLIT (Full Left Column) -->
-    <div class="project-card kittylit">
-      <h2>📘 KittyLit</h2>
-      <p class="role">AI Product Manager | Responsible AI Strategist</p>
-      <p class="summary">Helps parents find meaningful, age-appropriate books through fine-tuned LLMs and RAG pipelines.</p>
-      
-      <ul>
-        <li><b>Problem:</b> Lack of trusted book recommendations for children.</li>
-        <li><b>Solution:</b> Built LoRA + RAG-based recommendation system with explainable personalization.</li>
-        <li><b>Impact:</b> +40% discovery accuracy | Transparent logic | Improved parent trust.</li>
-        <li><b>Governance:</b> Applied S-RAIEF guardrails for safety, fairness, and explainability.</li>
-      </ul>
+  <section class="project-grid">
 
-      <!-- 🔘 Buttons -->
-      <div class="btn-group">
-        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit-PRD.pdf') }}" target="_blank">View PRD</a>
-        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit-MRD.pdf') }}" target="_blank">View MRD</a>
-        <a href="{{ url_for('static', filename='images/kittyLit_Architecture.png') }}" target="_blank">View Architecture</a>
-        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit_2025_Gantt_Roadmap.pdf') }}" target="_blank">View Roadmap</a>
-        <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit Case Study.pdf') }}" target="_blank">View Case Study</a>
+    <!-- ==========================================================
+         🩵 LEFT SIDE — KITTYLIT (Full Height)
+    =========================================================== -->
+    <div class="left-column">
+
+      <div class="project-card kittylit">
+        <h2>📘 KittyLit – RAG + LoRA Recommendation System</h2>
+        <p class="role">GenAI Engineer | RAG Architect</p>
+
+        <p class="summary">
+          An end-to-end recommendation engine using embeddings, FAISS, LoRA-fine-tuned MiniLM,
+          re-ranking, and memory agent orchestration. Built with hallucination control, validation,
+          explainability logs, and safety guardrails.
+        </p>
+
+        <ul>
+          <li><b>Pipeline:</b> Embeddings → FAISS → Re-ranking → LLM Agent</li>
+          <li><b>Model:</b> LoRA-fine-tuned MiniLM</li>
+          <li><b>Governance:</b> Validation, toxicity filters, input firewall, logs</li>
+        </ul>
+
+        <!-- ⭐ Architecture Diagram -->
+        <div class="architecture-box">
+          <img 
+            src="{{ url_for('static', filename='/images/kittylit_architecture.png') }}"
+            alt="KittyLit Architecture Diagram"
+            class="architecture-img">
+        </div>
+
+        <div class="btn-group">
+          <a href="https://github.com/suganyaGaurav" target="_blank">View on GitHub</a>
+          <a href="{{ url_for('serve_pdf', filename='kittylit/KittyLit Case Study.pdf') }}" target="_blank">View Case Study</a>
+        </div>
+
       </div>
     </div>
 
-    <!-- 💬 BROBUDDY (Top Right) -->
-    <div class="project-card brobuddy">
-      <h2>🤖 BroBuddy</h2>
-      <p class="role">Product Owner | Governance Designer</p>
-      <p class="summary">AI mentorship chatbot promoting emotional safety and empathy for youth.</p>
+    <!-- ==========================================================
+         💙 RIGHT COLUMN — 2 STACKED PROJECTS
+    =========================================================== -->
+    <div class="right-column">
 
-      <ul>
-        <li><b>Problem:</b> Lack of judgment-free digital spaces for men.</li>
-        <li><b>Solution:</b> RAG pipeline with empathy filters, governance firewalls, and bias mitigation.</li>
-        <li><b>Impact:</b> 30% improvement in conversation quality | Zero toxic outputs.</li>
-        <li><b>Governance:</b> S-RAIEF-based transparency scoring & firewall moderation.</li>
-      </ul>
+      <!-- ⚡ CLOUD-BASED GENAI ASSISTANT -->
+      <div class="project-card brobuddy">
+        <h2>⚡ Cloud-Based GenAI Assistant (AWS Bedrock)</h2>
+        <p class="role">Responsible GenAI Engineer | In Progress</p>
 
-      <a class="btn" href="{{ url_for('serve_pdf', filename='brobuddy/Brobuddy_casestudy.pdf') }}" target="_blank">View Case Study</a>
-    </div>
+        <p class="summary">
+          A production-aligned assistant using Claude 3.5 Sonnet + Titan Embeddings with secure IAM,
+          audit logs, moderation and responsible prompting layers.
+        </p>
 
-    <!-- 🎙️ KUTTYDUB (Bottom Right) -->
-    <div class="project-card kuttydub">
-      <h2>🎙️ KuttyDub</h2>
-      <p class="role">AI Product Manager | Governance & Cultural Ethics Advocate</p>
-      <p class="summary">AI dubbing system ensuring cultural sensitivity, privacy, and expressive child voices.</p>
+        <ul>
+          <li><b>Stack:</b> AWS Bedrock, Claude 3.5, Titan Embeddings</li>
+          <li><b>Governance:</b> IAM access control, logs, moderation</li>
+          <li><b>Status:</b> Core pipeline & IAM integration completed</li>
+        </ul>
 
-      <ul>
-        <li><b>Problem:</b> Lack of responsible dubbing systems for children’s content.</li>
-        <li><b>Solution:</b> Whisper ASR + Coqui TTS + FFmpeg with child data protection.</li>
-        <li><b>Impact:</b> +25% emotional tone accuracy | 100% anonymized voices.</li>
-        <li><b>Governance:</b> DPDP compliance & cultural fairness filters.</li>
-      </ul>
+        <div class="btn-group">
+          <a href="https://github.com/suganyaGaurav" target="_blank">GitHub (In Progress)</a>
+          <a href="{{ url_for('serve_pdf', filename='brobuddy/Brobuddy_casestudy.pdf') }}" target="_blank">View Case Study</a>
+        </div>
+      </div>
 
-      <a class="btn" href="{{ url_for('serve_pdf', filename='kuttydub/Kuttydub_case_study.pdf') }}" target="_blank">View Case Study</a>
+      <!-- 🧠 DISTILLED NLP MODEL -->
+      <div class="project-card distil">
+        <h2>🧠 Distilled NLP Model (IMDB) — HuggingFace</h2>
+        <p class="role">NLP Engineer | Model Distillation</p>
+
+        <p class="summary">
+          Distilled DistilBERT IMDB model with transparent model card including risks, usage guidance,
+          intended use, evaluation metrics and limitations.
+        </p>
+
+        <ul>
+          <li><b>Tech:</b> DistilBERT, Distillation, HF Trainer</li>
+          <li><b>Evaluation:</b> F1, Accuracy, Precision/Recall</li>
+          <li><b>Governance:</b> Responsible model card</li>
+        </ul>
+
+        <div class="btn-group">
+          <a href="https://huggingface.co/SuganyaP/quick-distilbert-imdb" target="_blank">View Model</a>
+          <a href="https://github.com/suganyaGaurav" target="_blank">GitHub</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -97,9 +132,9 @@
        🌿 FOOTER
   =========================================================== -->
   <footer>
-    <p>Built with responsibility, creativity, and heart by <strong>Suganya P</strong> 🌸</p>
+    <p>Built responsibly with engineering depth — <strong>Suganya P</strong> 🌸</p>
     <p class="visitors">👁️ Visitors: <strong>{{ visits }}</strong></p>
-    <p class="note">No personal data collected — visitor count only.</p>
   </footer>
+
 </body>
 </html>
