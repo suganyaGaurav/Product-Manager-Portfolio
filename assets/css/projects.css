@@ -1,6 +1,5 @@
 /* ==========================================================
-🌸 Suganya P | Projects Page Styles (Case Study Edition)
-Simple & Clean Layout
+🌸 Projects Page — GenAI Engineering Edition (Final Layout)
 ========================================================== */
 
 :root {
@@ -13,9 +12,7 @@ Simple & Clean Layout
   --radius: 20px;
 }
 
-/* ==========================================================
-🌌 BASE LAYOUT
-========================================================== */
+/* BASE */
 body {
   font-family: "Poppins", sans-serif;
   background: var(--bg-gradient);
@@ -23,9 +20,7 @@ body {
   margin: 0;
 }
 
-/* ==========================================================
-🔹 HEADER
-========================================================== */
+/* HEADER */
 .top-bar {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -39,168 +34,119 @@ body {
   color: var(--text-light);
   text-decoration: none;
   margin-left: 20px;
-  transition: 0.3s;
   font-weight: 500;
 }
 
-.top-bar a:hover {
-  color: var(--accent);
-}
-
-/* ==========================================================
-🔒 IP NOTE (Top-right Corner)
-========================================================== */
+/* IP NOTE */
 .ip-note {
   position: absolute;
   top: 90px;
   right: 40px;
   width: 280px;
   background: rgba(255, 255, 255, 0.06);
-  color: #cfd8ef;
+  color: #dbe6ff;
   border: 1px solid var(--border-soft);
   border-radius: 10px;
-  padding: 10px 14px;
+  padding: 12px;
   font-size: 0.8rem;
-  line-height: 1.4;
 }
 
 /* ==========================================================
-💼 PROJECTS LAYOUT (KittyLit Left | BroBuddy & KuttyDub Right)
+   GRID LAYOUT
 ========================================================== */
-.projects-layout {
+.project-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 25px;
-  padding: 100px 80px 60px;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 140px 80px 80px;
 }
 
-/* 🩵 KittyLit spans full height on left side */
-.kittylit {
-  grid-row: 1 / span 2;
+/* LEFT COLUMN */
+.left-column {
+  display: flex;
 }
 
-/* Project card shared styling */
+/* RIGHT COLUMN */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ==========================================================
+   PROJECT CARD (UNIVERSAL)
+========================================================== */
 .project-card {
   background: var(--card-bg);
+  padding: 30px;
   border-radius: var(--radius);
   border: 1px solid var(--border-soft);
-  padding: 30px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.8s ease both;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
 .project-card h2 {
-  color: var(--text-bright);
+  color: white;
   font-size: 1.4rem;
-  margin-bottom: 5px;
 }
 
-.project-card .role {
+.role {
   color: var(--accent);
   font-size: 0.9rem;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.project-card p, 
-.project-card li {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  line-height: 1.5;
-}
-
-.project-card ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 10px;
-}
-
-.project-card ul li {
-  margin-bottom: 8px;
+/* KITTYLIT CARD */
+.kittylit {
+  width: 100%;
 }
 
 /* ==========================================================
-🔘 BUTTONS
+   ARCHITECTURE SECTION
 ========================================================== */
+.architecture-box {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.architecture-img {
+  width: 80%;
+  max-width: 720px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: block;
+  margin: 0 auto;
+}
+
+/* BUTTON GROUP */
 .btn-group {
   margin-top: 15px;
   display: flex;
+  gap: 12px;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.btn-group a,
-.btn {
-  display: inline-block;
+.btn-group a {
   background: linear-gradient(90deg, #60A5FA, #93C5FD);
   color: #0A1930;
   padding: 8px 16px;
   border-radius: 12px;
-  font-weight: 600;
   text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn-group a:hover,
-.btn:hover {
-  background: #BFDBFE;
-  transform: translateY(-3px);
+  font-weight: 600;
 }
 
 /* ==========================================================
-🌿 FOOTER
-========================================================== */
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #A5B4FC;
-  border-top: 1px solid var(--border-soft);
-  font-size: 0.9rem;
-}
-
-/* ==========================================================
-✨ ANIMATION (Fade Up)
-========================================================== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==========================================================
-📱 RESPONSIVE (Mobile-Friendly)
+   RESPONSIVE DESIGN
 ========================================================== */
 @media (max-width: 1000px) {
-  .projects-layout {
+  .project-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
     padding: 40px 30px;
-  }
-
-  .kittylit {
-    grid-row: auto;
   }
 
   .ip-note {
     position: relative;
+    margin-bottom: 20px;
     width: auto;
-    top: 0;
-    right: 0;
-    margin: 0 30px 20px;
-  }
-
-  .project-card {
-    padding: 25px;
   }
 }
